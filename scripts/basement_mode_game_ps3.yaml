@@ -1,0 +1,22 @@
+### Game mode for PS3 downstairs ###
+
+basement_mode_game_ps3:
+  alias: "Game Mode - PS3"
+  sequence: 
+    - service: light.turn_on
+      data:
+        entity_id: light.basement_main_lights_level
+        brightness: 76
+    - service: switch.turn_off
+      data:
+        entity_id: switch.basement_middle_light_switch
+    - service: script.turn_on
+      data:
+         entity_id:
+           - script.basement_projector_on
+           - script.basement_audio_receiver_on_off
+    - delay: 00:00:05
+    - service: script.turn_on
+      data:
+        entity_id:
+           - script.basement_audio_receiver_input_bd_dvd

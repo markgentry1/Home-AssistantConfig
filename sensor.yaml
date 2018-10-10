@@ -1,0 +1,446 @@
+### Sensors ###
+
+###############
+# Cert Expiry #
+###############
+  - platform: cert_expiry
+    host: !secret hass_host
+    port: !secret hass_port
+
+#################
+# CoinMarketCap #    
+#################
+  - platform: coinmarketcap
+    currency: bitcoin
+    display_currency: USD
+
+#########################
+# Driving Times section #
+#########################
+  - platform: waze_travel_time
+#    api_key: !secret gmap_api
+    origin: device_tracker.gentry_p2
+    destination: zone.home
+    region: 'US'
+    name: Time to Home for Mark
+
+  - platform: waze_travel_time
+#    api_key: !secret gmap_api
+    origin: device_tracker.gentry_p2
+    destination: zone.etowah_county_board_of_education
+    region: 'US'
+    name: Time to Work for Mark
+
+  - platform: waze_travel_time
+#    api_key: !secret gmap_api
+    origin: device_tracker.gentry_p2
+    destination: device_tracker.gentry_krystin
+    region: 'US'
+    name: Time for Mark to Krystin
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.attalla_walmart
+#    name: Time to Attalla Walmart for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.cornerstone
+#    name: Time to Cornerstone for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.downtown_running_course
+#    name: Time to Downtown Running Course for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.duck_springs_elementary_school
+#    name: Time to Duck for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.ed_and_deanas_house
+#    name: Time to Ed and Deana's for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.east_gadsden_walmart
+#    name: Time to East Gadsden Walmart for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.noccalula_falls
+#    name: Time to Noccalula Falls for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.planet_fitness
+#    name: Time to Gym for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.krystins_moms_house
+#    name: Time to Randy and Dana's for Mark
+
+#  - platform: google_travel_time
+#    api_key: !secret gmap_api
+#    origin: device_tracker.gentry_p2
+#    destination: zone.marks_parents_house
+#    name: Time to Alan and Ann's for Mark
+
+  - platform: waze_travel_time
+#    api_key: !secret gmap_api
+    origin: device_tracker.gentry_krystin
+    destination: zone.home
+    region: 'US'
+    name: Time to Home for Krystin
+
+  - platform: waze_travel_time
+#    api_key: !secret gmap_api
+    origin: device_tracker.gentry_krystin
+    destination: zone.duck_springs_elementary_school
+    region: 'US'
+    name: Time to Work for Krystin
+
+
+################
+# MQTT Section #
+################
+  - platform: mqtt
+    state_topic: "owntracks/gentry/p2"
+    name: "Battery phone Mark"
+    unit_of_measurement: "%"
+    value_template: '{{ value_json.batt }}'
+
+  - platform: mqtt
+    state_topic: "owntracks/gentry/krystin"
+    name: "Battery phone Krystin"
+    unit_of_measurement: "%"
+    value_template: '{{ value_json.batt }}'
+    
+##########
+# Pollen #
+##########
+  - platform: pollen
+    zip_code: !secret zip_code
+    monitored_conditions:
+      - allergy_average_forecasted
+      - allergy_average_historical
+      - allergy_index_today
+      - allergy_index_tomorrow
+      - allergy_index_yesterday
+      - disease_average_forecasted
+
+#####################
+# Speedtest Section #
+#####################
+#  - platform: speedtest
+#    monitored_conditions:
+#      - ping
+#      - download
+#      - upload
+
+########
+# Time #
+########
+  - platform: time_date
+    display_options:
+      - 'time_date'
+
+#####################
+# Templates Section #
+#####################
+  - platform: template
+    sensors:
+      amazon_echo:
+        value_template: '{% if is_state("device_tracker.amazon_echo", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Amazon Echo'
+      ap:
+        value_template: '{% if is_state("device_tracker.ubiquiti_ap", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Ubiquiti AP'
+      battery_level_motion_sensor_guest_bathroom:
+        value_template: '{{states.zwave.guest_bathroom_motion_sensor.attributes.battery_level}}'
+        friendly_name: 'Motion sensor battery'
+        unit_of_measurement: '%'
+      battery_level_motion_sensor_stairs:
+        value_template: '{{states.zwave.ecolink_motion_sensor.attributes.battery_level}}'
+        friendly_name: 'Motion Sensor Battery'
+        unit_of_measurement: '%'
+      battery_level_smoke_co_alarm:
+        value_template: '{{states.zwave.first_alert_zcombo_smoke_and_carbon_monoxide_detector.attributes.battery_level}}'
+        friendly_name: 'Smoke/CO Alarm Battery'
+        unit_of_measurement: '%'
+      br_tv:
+        value_template: '{% if is_state("media_player.bedroom_tv", "on") %}on{% else %}off{% endif %}'
+        friendly_name: 'Bedroom TV'
+      broadlink_rmpro:
+        value_template: '{% if is_state("device_tracker.broadlink_rmpro", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Broadlink RM Pro'
+      camera_back_porch:
+        value_template: '{% if is_state("device_tracker.camera_back_porch", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Camera - Back Porch'
+      camera_back_yard:
+        value_template: '{% if is_state("device_tracker.camera_back_yard", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Camera - Back Yard'
+      camera_driveway:
+        value_template: '{% if is_state("device_tracker.camera_driveway", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Camera - Driveway'
+      camera_front_porch:
+        value_template: '{% if is_state("device_tracker.camera_front_porch", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Camera - Front Porch'
+      camera_inside_wifi:
+        value_template: '{% if is_state("device_tracker.camera_inside_wifi", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Camera - Inside Wifi'
+      chromebook:
+        value_template: '{% if is_state("device_tracker.chromebook", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Chromebook'
+      chromecast:
+        value_template: '{% if is_state("device_tracker.chromecast", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Chromecast'
+      desktop_pc:
+        value_template: '{% if is_state("device_tracker.office_desktop", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Desktop PC'
+      epson_printer:
+        value_template: '{% if is_state("device_tracker.epson_printer", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Epson Printer'
+      ghomemini_upstairs:
+        value_template: '{% if is_state("device_tracker.ghomemini_upstairs", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Google Home Mini Upstairs'
+      ghomemini_downstairs:
+        value_template: '{% if is_state("device_tracker.ghomemini_downstairs", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Google Home Mini Downstairs'
+      is_krystin_home:
+        value_template: '{% if is_state("binary_sensor.krystin_home", "on") %}Yes{% else %}No{% endif %}'
+        friendly_name: 'Is Krystin home?'
+      is_mark_home:
+        value_template: '{% if is_state("binary_sensor.mark_home", "on") %}Yes{% else %}No{% endif %}'
+        friendly_name: 'Is Mark  home?'
+#      mark_drive_time_destination:
+#        value_template: "{{ states.input_select.mark_drive_time.state }}"
+#        friendly_name: "Destination chosen:"
+#      mark_drive_time_destination_2:
+#        friendly_name: "Time to destination:"
+#        value_template: >-
+#          {% if is_state("sensor.mark_drive_time_destination", "Attalla Walmart") %}
+#            {{ states.sensor.time_to_attalla_walmart_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Cornerstone") %}
+#            {{ states.sensor.time_to_cornerstone_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Downtown running course") %}
+#            {{ states.sensor.time_to_downtown_running_course_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Duck Springs Elementary") %}
+#            {{ states.sensor.time_to_duck_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "ECBOE") %}
+#            {{ states.sensor.time_to_work_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Ed and Deana's") %}
+#            {{ states.sensor.time_to_ed_and_deanas_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "East Gadsden Walmart") %}
+#            {{ states.sensor.time_to_east_gadsden_walmart_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Home") %}
+#            {{ states.sensor.time_to_home_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Noccalula Falls") %}
+#            {{ states.sensor.time_to_noccalula_falls_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Planet Fitness") %}
+#            {{ states.sensor.time_to_gym_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Randy and Dana's") %}
+#            {{ states.sensor.time_to_randy_and_danas_for_mark.state_with_unit }}
+#          {% elif is_state("sensor.mark_drive_time_destination", "Alan and Ann's") %}
+#            {{ states.sensor.time_to_alan_and_anns_for_mark.state_with_unit }}
+#          {% else %}
+#            Unknown
+#          {% endif %}
+      firestick_living_room:
+        value_template: '{% if is_state("device_tracker.firestick_living_room", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Firestick - Living Room'
+      firestick_bed_room:
+        value_template: '{% if is_state("device_tracker.firestick_bedroom", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Firestick - Bedroom'
+      garage_door_internet_gateway:
+        value_template: '{% if is_state("device_tracker.garage_door_internet_gateway", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Garage Door Internet Gateway'
+      garage_status:
+        friendly_name: Garage Door Status
+        value_template: "{{ states.cover.garage_door_opener.state }}"
+        icon_template: >
+          {% if is_state('cover.garage_door_opener', 'open') %}
+            mdi:garage-open
+          {% else %}
+            mdi:garage
+          {% endif %}
+      hikvision_nvr:
+        value_template: '{% if is_state("device_tracker.hikvision_nvr", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Hikvision NVR'
+      krystin_phone:
+        value_template: '{% if is_state("device_tracker.krystins_pixel_2", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Krystins Pixel 2'
+      lr_tv:
+        value_template: '{% if is_state("media_player.living_room_tv", "on") %}on{% else %}off{% endif %}'
+        friendly_name: 'Living Room TV'
+      mark_charging:
+        value_template: '{% if is_state("binary_sensor.mark_charging", "on") %}Charging{% else %}Not Charging{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.mark_charging", "on") %}mdi:power-plug{% else %}mdi:power-plug-off{% endif %}'
+      mark_car_bt:
+        value_template: '{% if is_state("binary_sensor.mark_car_bt", "on") %}Connected{% else %}Disconnected{% endif %}'
+        icon_template: '{% if is_state("binary_sensor.mark_car_bt", "on") %}mdi:bluetooth-connect{% else %}mdi:bluetooth-off{% endif %}'
+        friendly_name: "Mark's Car Bluetooth"
+      mark_phone:
+        value_template: '{% if is_state("device_tracker.marks_pixel_2", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Marks Pixel'
+      media_pc:
+        value_template: '{% if is_state("device_tracker.media_pc", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Media PC'
+      mark_t560:
+        value_template: '{% if is_state("device_tracker.mark_t560", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: "Mark's Work Laptop"
+      nest:
+        value_template: '{% if is_state("device_tracker.nest_thermostat", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Nest Thermostat'
+      nest_hvac_status:
+        friendly_name: 'Nest Status'
+        value_template: >-
+          {% if is_state('sensor.nest_thermostat_hvac_state', 'off') %}
+            Off
+          {% elif is_state('sensor.nest_thermostat_hvac_state', 'heating') %}
+            Heating
+          {% elif is_state('sensor.nest_thermostat_hvac_state', 'cooling') %}
+            Cooling
+          {% else %}
+            Unknown
+          {% endif %}
+        entity_picture_template: >-
+          {% if is_state('sensor.nest_thermostat_hvac_state', 'off') %}
+            /local/icons/nest_off.gif
+          {% elif is_state('sensor.nest_thermostat_hvac_state', 'heating') %}
+            /local/icons/nest_heat.jpg
+          {% elif is_state('sensor.nest_thermostat_hvac_state', 'cooling') %}
+            /local/icons/nest_cool.jpg
+          {% else %}
+            /local/icons/nest_unknown.jpg
+          {% endif %}
+      nintendo_switch:
+        value_template: '{% if is_state("device_tracker.nintendo_switch", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: "Nintendo Switch"
+#      pre_alarm:
+#        value_template: '{% if is_state("sensor.")'
+      ps3_living_room:
+        value_template: '{% if is_state("device_tracker.ps3_living_room", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: "Living Room PS3"
+      router:
+        value_template: '{% if is_state("device_tracker.router", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Router'
+      smoke_alarm:
+        value_template: '{%- if is_state("sensor.first_alert_zcombo_smoke_and_carbon_monoxide_detector_alarm_level", "0") %}
+                          Idle
+                          {%else%}
+                            {%- if is_state("sensor.first_alert_zcombo_smoke_and_carbon_monoxide_detector_alarm_type", "1") %}
+                            Fire
+                            {%- elif is_state("sensor.first_alert_zcombo_smoke_and_carbon_monoxide_detector_alarm_type", "2") %}
+                            C02
+                            {%- elif is_state("sensor.first_alert_zcombo_smoke_and_carbon_monoxide_detector_alarm_type", "12") %}
+                            Testing
+                            {%- elif is_state("sensor.first_alert_zcombo_smoke_and_carbon_monoxide_detector_alarm_type", "13") %}
+                            Idle
+                            {% else %}
+                            Unknown
+                            {%- endif %}
+                          {%endif%}'
+        friendly_name: 'Smoke Alarm'
+      switch:
+        value_template: '{% if is_state("device_tracker.brocade_switch", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Main Switch'
+      treadmill:
+        value_template: '{% if is_state("device_tracker.treadmill", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Treadmill'
+      xbox_one_downstairs:
+        value_template: '{% if is_state("device_tracker.xbox_one_downstairs", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Xbox One - Downstairs'
+      xbox_one_livingroom:
+        value_template: '{% if is_state("device_tracker.xbox_one_livingroom", "home") %}online{% else %}offline{% endif %}'
+        friendly_name: 'Xbox One - Livingroom'
+
+###############
+# UPS Section #
+###############
+  - platform: ups
+    username: !secret ups_username
+    password: !secret ups_password
+
+##################
+# Uptime Section #
+##################
+  - platform: uptime
+    unit_of_measurement: hours
+
+#####################
+# Xbox Live Section #
+#####################
+#  - platform: xbox_live
+#    api_key: !secret xboxlive_api
+#    xuid:
+#      - !secret xboxlive_xuid
+
+###################
+# Weather Section #
+###################
+  - platform: yweather
+    name: Current weather
+    monitored_conditions:
+      - weather
+      - weather_current
+      - temp_min
+      - temp_max
+      - wind_speed
+      - pressure
+      - visibility
+      - humidity
+      - temperature
+  - platform: yweather
+    forecast: 1
+    name: Forecast 1
+    monitored_conditions:
+      - weather
+      - temp_min
+      - temp_max
+  - platform: yweather
+    forecast: 2
+    name: Forecast 2
+    monitored_conditions: 
+      - weather
+      - temp_min
+      - temp_max
+
+  - platform: darksky
+    api_key: !secret darksky_api
+    monitored_conditions:
+      - summary
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - temperature
+      - apparent_temperature
+      - wind_speed
+      - wind_bearing
+      - cloud_cover
+      - humidity
+      - pressure
+      - visibility
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
+      - temperature_high
+      - temperature_low
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - precip_intensity_max
+      - uv_index
+      - nearest_storm_distance
+    update_interval: '00:05:00'

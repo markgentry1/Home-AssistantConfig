@@ -1,0 +1,11 @@
+### Turn off garage light 5 minutes after garage door closes ###
+
+  alias: "Turn off garage light with garage door"
+  trigger:
+    platform: state
+    entity_id: cover.garage_door
+    to: 'closed'
+  action:
+    - delay: 00:05:00
+    - service: homeassistant.turn_off
+      entity_id: switch.garage_light_switch

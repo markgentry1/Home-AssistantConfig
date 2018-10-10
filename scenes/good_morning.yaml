@@ -1,0 +1,10 @@
+### Good morning scene ###
+
+  name: Good morning
+  entities:
+    switch.marks_bedside_lamp_switch:
+      state: on
+    switch.krystins_lamp:
+      state: on
+    switch.bedroom_floor_fan:
+      state: off

@@ -1,0 +1,29 @@
+### Send Mark an actionable notification when BT is connected to the car and is at home ###
+
+  alias: "Notify Mark when leaving w/ actions"
+  initial_state: False
+  trigger:
+    platform: state
+    entity_id: binary_sensor.mark_car_bt
+    to: "on"
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.mark_home
+        state: "on"
+      - condition: state
+        entity_id: cover.garage_door
+        state: "open"
+  action:
+    service: notify.push
+    data:
+      message: "It looks like you're leaving at {{ as_timestamp(now()) | timestamp_custom('%I:%M%p', true) }}. Would you like me to turn anything off for you?"
+      title: "Update"
+      target: "Mark's Pixel 2"
+      data:
+        actions:
+          - action: "close_garage_only"
+            title: "Garage only"
+          - action: "turn_everything_off"
+            title: "Everything"

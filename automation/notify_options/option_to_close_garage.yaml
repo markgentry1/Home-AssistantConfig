@@ -1,0 +1,18 @@
+### Option to close garage only via actionable notification ###
+
+  alias: "Option to close garage only"
+  hide_entity: True
+  trigger:
+    platform: event
+    event_type: html5_notification.clicked
+    event_data: 
+      action: close_garage_only
+  action:
+    - service: cover.close_cover
+      entity_id: cover.garage_door
+#    - service: notify.push
+#      data:
+#        message: "Closed garage door!"
+#        title: "Success!"
+#        target: "Mark's Pixel 2"
+## I'm getting tired of this notification. I may re-enable it in the future. Or I may not. Don't tell me how to live my life.

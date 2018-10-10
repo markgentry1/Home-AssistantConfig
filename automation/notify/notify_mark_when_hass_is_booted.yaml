@@ -1,0 +1,11 @@
+### Send notification to Mark's phone when homeassistant is finished booting up ###
+
+  alias: "Notify Mark on boot"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: notify.push
+    data:
+      message: "Homeassistant has finished booting up at {{ as_timestamp(now()) | timestamp_custom('%I:%M%p', true) }} "
+      target: ["Mark's Pixel 2", "Mark's T560"]

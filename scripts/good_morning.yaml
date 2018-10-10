@@ -1,0 +1,11 @@
+### Good morning script ##3
+
+good_morning:
+  alias: "Good morning!"
+  sequence:
+    - service: switch.turn_on
+      entity_id: switch.marks_bedside_lamp
+    - service: switch.turn_on
+      entity_id: switch.krystins_lamp
+    - service: switch.turn_off
+      entity_id: switch.bedroom_floor_fan

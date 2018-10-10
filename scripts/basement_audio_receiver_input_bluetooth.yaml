@@ -1,0 +1,9 @@
+### Set the basement audio receiver's input to bluetooth to listen to music from phone ###
+
+basement_audio_receiver_input_bluetooth:
+  alias: "Input - Bluetooth"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_76
+      data:
+        packet:
+          - "JgBQAAABJZURFBA5ERQRFBE4ERQROBE5ERQROBE5ETkROBEUERQRExEUERQRFBEUEDkRFBE5EBQRFBE5EDkROREUEBQRFBEUEQAFiQABJUwRAA0FAAAAAAAAAAA="

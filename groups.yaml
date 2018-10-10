@@ -1,0 +1,694 @@
+
+##########################################################
+#                        Tabs                            #
+##########################################################
+
+# Home #
+default_view:
+  view: yes
+  icon: mdi:castle
+  entities:
+    - group.nest_group
+    - group.main_lights
+    - group.lamps
+    - group.fans
+    - group.garage
+    - group.presence
+    - group.sensors
+    - group.misc
+    - group.kitchen
+    - group.living_room
+    - group.master_bedroom
+    - group.guest_bathroom
+    - group.office
+    - group.basement
+    - group.back_porch
+    - group.scripts_for_group_views
+
+# Family #
+family_tab:
+  name: Family
+  view: yes
+  icon: mdi:human-male-female
+  entities:
+    - group.mark
+    - group.krystin
+
+# Drive Times #
+drive_time_tab:
+  name: Drive Times
+  view: yes
+  icon: mdi:car
+  entities:
+    - group.mark_drive_time_static
+    - group.krystin_drive_time_static
+#    - group.mark_drive_time_select
+
+# Network #
+network_tab:
+  name: Network
+  view: yes
+  icon: mdi:network
+  entities:
+    - group.network_speedtest
+    - group.network_management
+    - group.network_cameras
+    - group.network_phones
+    - group.network_pcs
+    - group.network_gaming
+    - group.network_tvs
+    - group.network_streaming
+    - group.network_other
+    - group.network_zwave
+
+# Camera Tab #
+camera_tab:
+  name: Cameras
+  view: yes
+  icon: mdi:camera
+  entities:
+    - group.cameras
+    - group.camera_control
+
+# Automations #
+automations_tab:
+  name: Automations
+  view: yes
+  icon: mdi:arrow-right-drop-circle
+  entities: 
+    - group.all_automations
+
+# Weather #
+weather_tab:
+  name: Weather
+  view: yes
+  icon: mdi:weather-cloudy
+  entities:
+    - history_graph.temperature_graph
+    - group.weather_current
+    - group.weather_today
+    - group.weather_1
+    - group.weather_2
+    - group.pollen
+
+# Media #
+media_tab:
+  name: Media Players
+  view: yes
+  icon: mdi:cast
+  entities: 
+    - group.media_players
+
+# Media control tab #    
+media_play_tab:
+  name: Media Control
+  view: yes
+  icon: mdi:play-pause
+  entities:
+    - group.basement_media
+    - group.master_bedroom_media
+    - group.living_room_tv_group
+    - group.radio
+    - group.media_test
+  
+# Work related stuff #
+work_tab:
+  name: Work
+  view: yes
+  icon: mdi:briefcase
+  entities:
+    - group.work_stuff
+    
+# Crypto stuff #
+crypto_tab:
+  name: Crypto
+  view: yes
+  icon: mdi:coin
+  entities:
+    - group.crypto_group
+
+########################################################
+#                     Groups                           #
+########################################################
+
+###############################
+#          Home Tab           #
+###############################
+
+########
+# Nest #
+########
+nest_group:
+  name: Nest Thermostat
+  entities:
+    - climate.nest
+    - sensor.nest_hvac_status
+
+#######################
+# Lights and Switches #
+#######################
+main_lights:
+  name: Main Lights
+  entities:
+    - light.kitchen_main_lights_level
+    - light.kitchen_cabinet_lights
+    - light.living_room_lights_level
+    - light.guest_bathroom_light_level
+    - light.basement_main_lights_level
+    - switch.basement_middle_light_switch
+    - switch.back_porch_light_switch
+    - switch.garage_light_switch
+
+lamps:
+  name: Lamps
+  entities:
+    - switch.marks_bedside_lamp_switch
+    - switch.krystins_lamp
+    - switch.living_room_lamp
+fans:
+  name: Fans
+  entities:
+    - switch.bedroom_floor_fan
+    - switch.air_purifier
+
+##########
+# Garage #
+##########
+garage:
+  control: hidden
+  name: Garage
+  entities:
+    - binary_sensor.garage_door_status
+    - cover.garage_door
+    - switch.garage_light_switch
+    
+############
+# Presence #    
+############
+presence:
+  name: Presence
+  entities:
+    - sensor.is_krystin_home
+    - sensor.is_mark_home
+    
+###########
+# Sensors #
+###########
+sensors:
+  name: Sensors
+  entities:
+    - sensor.smoke_alarm
+    - sensor.battery_level_smoke_co_alarm
+    - binary_sensor.ecolink_motion_sensor_sensor
+    - sensor.battery_level_motion_sensor_stairs
+    - binary_sensor.guest_bathroom_motion_sensor_sensor
+    - sensor.battery_level_motion_sensor_guest_bathroom
+    
+########
+# Misc #
+########
+misc:
+  name: Miscellaneous
+  entities:
+    - sensor.ups
+    
+###########
+# Kitchen #
+###########
+kitchen:
+  name: Kitchen
+  entities: 
+    - light.kitchen_main_lights_level
+    
+###############
+# Living Room #
+###############
+living_room:
+  name: Living Room
+  entities:
+    - light.living_room_lights_level
+    - switch.living_room_lamp
+    - sensor.lr_tv
+    - sensor.media_pc
+    - switch.wake_on_lan
+    - script.shutdown_mediaserver
+    - switch.living_room_xbox_power
+    - switch.air_purifier
+    - sensor.smoke_alarm
+    - sensor.battery_level_smoke_co_alarm
+    
+##################
+# Master Bedroom #
+##################
+master_bedroom:
+  name: Master Bedroom
+  entities:
+    - switch.marks_bedside_lamp_switch
+    - switch.krystins_lamp
+    - switch.bedroom_floor_fan
+    - sensor.br_tv
+    - switch.bedroom_tv_power
+    - script.br_tv_vol_up
+    - script.br_tv_vol_down
+    - script.br_tv_source_button
+    
+##################
+# Guest Bathroom #
+##################
+guest_bathroom:
+  name: Guest Bathroom
+  entities:
+    - light.guest_bathroom_light_level
+    - binary_sensor.guest_bathroom_motion_sensor_sensor
+    - sensor.battery_level_motion_sensor_guest_bathroom
+    
+##########
+# Office #
+##########
+office:
+  name: Office
+  entities:
+    - sensor.desktop_pc
+    - switch.wake_on_lan_2
+    - script.shutdown_office_desktop
+    
+############
+# Basement #
+############
+basement:
+  name: Basement
+  entities:
+    - light.basement_main_lights_level
+    - switch.basement_middle_light_switch
+    - binary_sensor.ecolink_motion_sensor_sensor
+    - sensor.battery_level_motion_sensor_stairs
+#   - script.basement_movie_mode    # not ready for this quite yet. will do soon #
+    - script.basement_projector_on
+    - script.basement_projector_off
+    - script.basement_audio_receiver_on_off
+    - script.basement_audio_receiver_vol_up
+    - script.basement_audio_receiver_vol_down
+    - script.basement_audio_receiver_input_game
+    - script.basement_audio_receiver_input_strm_box
+    - script.basement_audio_receiver_input_bd_dvd
+    - script.basement_audio_receiver_input_bluetooth
+    
+##############
+# Back Porch #
+##############
+back_porch:
+  name: Back Porch
+  entities:
+    - switch.back_porch_light_switch
+    
+ 
+##########################
+# Scripts for Room Views #
+##########################
+scripts_for_group_views:
+  name: Change Views
+  entities:
+    - script.frontend_light_view
+    - script.frontend_room_view
+
+################################
+#          Family Tab          #
+################################
+
+########
+# Mark #
+########
+mark:
+  name: Mark
+  entities:
+    - device_tracker.gentry_p2
+    - sensor.battery_phone_mark
+    - sensor.mark_charging
+    - sensor.mark_car_bt
+#    - sensor.floppy_pancakes
+    - calendar.test_everything
+    - camera.mark_map
+###########
+# Krystin #
+###########
+krystin:
+  name: Krystin
+  entities:
+    - device_tracker.gentry_krystin
+    - sensor.battery_phone_krystin
+    - camera.krystin_map
+
+#######################################
+#           Drive Times               #
+#######################################
+mark_drive_time_static:
+  name: Mark's Main Drive Times
+  entities:
+    - sensor.time_to_home_for_mark
+    - sensor.time_to_work_for_mark
+    - sensor.time_for_mark_to_krystin
+krystin_drive_time_static:
+  name: Krystin's Main Drive Times
+  entities:
+    - sensor.time_to_home_for_krystin
+    - sensor.time_to_work_for_krystin
+    - sensor.time_for_mark_to_krystin
+#mark_drive_time_select:
+#  name: Mark's Other Drive Times
+#  entities:
+#    - input_select.mark_drive_time
+#    - sensor.mark_drive_time_destination
+#    - sensor.mark_drive_time_destination_2
+#######################################
+#           Network Tab               #
+#######################################
+
+#############
+# Speedtest #
+#############
+#network_speedtest:
+#  name: Speedtest
+#  entities: 
+#    - sensor.speedtest_download
+#    - sensor.speedtest_upload
+#    - sensor.speedtest_ping
+##############
+# Management #
+##############
+network_management:
+  name: Network Management
+  entities:
+    - sensor.uptime
+    - sensor.router
+    - sensor.switch
+    - sensor.ap
+    - sensor.ssl_certificate_expiry
+###################
+# Network Cameras #
+###################
+network_cameras:
+  name: Network Cameras
+  entities:
+    - sensor.hikvision_nvr
+    - sensor.camera_driveway
+    - sensor.camera_back_porch
+    - sensor.camera_front_porch
+    - sensor.camera_back_yard
+    - sensor.camera_inside_wifi
+##########
+# Phones #
+##########
+network_phones:
+  name: Phones
+  entities:
+    - sensor.mark_phone
+    - sensor.krystin_phone
+#######
+# PCs #
+#######
+network_pcs:
+  name: Computers
+  entities:
+    - sensor.desktop_pc
+    - switch.wake_on_lan_2
+    - script.shutdown_office_desktop
+    - sensor.media_pc
+    - switch.wake_on_lan
+    - script.shutdown_mediaserver
+    - sensor.chromebook
+    - sensor.mark_t560
+##########
+# Gaming #
+##########
+network_gaming:
+  name: Gaming Devices
+  entities:
+    - sensor.xbox_one_livingroom
+    - sensor.xbox_one_downstairs
+    - sensor.ps3_living_room
+    - sensor.nintendo_switch
+#######
+# TVs #
+#######
+network_tvs:
+  name: TV's
+  entities:
+    - sensor.lr_tv
+    - sensor.br_tv
+#####################
+# Streaming Devices #
+#####################
+network_streaming:
+  name: Streaming Devices
+  entities: 
+    - sensor.firestick_living_room
+    - sensor.firestick_bed_room
+    - sensor.chromecast
+#########
+# Other #
+#########
+network_other:
+  name: Other devices
+  entities:
+    - sensor.amazon_echo
+    - sensor.nest
+    - sensor.broadlink_rmpro
+    - sensor.ghomemini_upstairs
+    - sensor.ghomemini_downstairs
+    - sensor.garage_door_internet_gateway
+    - sensor.epson_printer
+    - sensor.treadmill
+##########
+# Z-Wave #
+##########
+network_zwave:
+  name: Zwave Devices
+  entities:
+    - zwave.aeotec_zw090_zstick_gen5_us
+    - zwave.back_porch_light
+    - zwave.basement_middle_light
+    - zwave.ecolink_motion_sensor
+    - zwave.first_alert_zcombo_smoke_and_carbon_monoxide_detector
+    - zwave.guest_bathroom_light
+    - zwave.guest_bathroom_motion_sensor
+    - zwave.lamp
+    - zwave.living_room_lights
+
+###############################
+#          Camera Tab         #
+###############################
+cameras:
+  name: Cameras
+  entities:
+    - camera.back_yard_camera
+    - camera.back_porch_camera
+#    - camera.front_porch_camera
+    - camera.driveway_camera
+    - camera.garage_camera
+
+##################################
+#           Weather Tab          #
+##################################
+
+###################
+# Current Weather #
+###################
+weather_current:
+  name: Current Weather
+  entities:
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_minutely_summary
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_nearest_storm_distance
+    - sun.sun
+    - camera.current_radar
+###################
+# Today's Weather #
+###################
+weather_today:
+  name: Today's Weather
+  entities: 
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_hourly_summary
+    - sensor.dark_sky_daytime_high_temperature
+    - sensor.dark_sky_overnight_low_temperature
+    - sensor.dark_sky_daily_summary
+####################
+# Weather next day #
+####################
+weather_1:
+  name: Tomorrow's Weather
+  entities:
+    - sensor.forecast_1_condition
+    - sensor.forecast_1_temperature_max
+    - sensor.forecast_1_temperature_min
+########################
+# Weather 2 days later #
+########################
+weather_2:
+  name: Day after tomorrow's weather
+  entities:
+    - sensor.forecast_2_condition
+    - sensor.forecast_2_temperature_max
+    - sensor.forecast_2_temperature_min
+    
+##########
+# Pollen #
+##########
+pollen:
+  name: Pollen forecast
+  entities:
+    - sensor.allergy_index_today
+    - sensor.allergy_index_tomorrow
+    - sensor.allergy_index_yesterday
+    - sensor.allergy_index_forecasted_average
+    - sensor.allergy_index_historical_average
+    - sensor.cold__flu_forecasted_average
+    
+#########################################
+#           Media Players Tab           #
+#########################################
+media_players:
+  name: Media Players
+  entities:
+    - media_player.kitchen_speaker
+    - media_player.basement_speaker
+    - media_player.home_group
+    - media_player.receiver
+#    - media_player.stream_unlimited7089
+#    - media_player.viziocastdisplay5621
+#    - media_player.viziocastdisplay8042
+    - media_player.living_room_tv
+    - media_player.bedroom_tv
+    
+    
+#######################################
+#          Media Control Tab          #
+#######################################
+####################
+# Basement control #
+####################
+basement_media:
+  name: Basement Media Control
+  entities:
+    - switch.basement_xbox_power
+    - script.basement_projector_on
+    - script.basement_projector_off
+    - script.basement_audio_receiver_on_off
+    - script.basement_audio_receiver_vol_up
+    - script.basement_audio_receiver_vol_down
+    - script.basement_audio_receiver_input_game
+    - script.basement_audio_receiver_input_strm_box
+    - script.basement_audio_receiver_input_bd_dvd
+    - script.basement_audio_receiver_input_bluetooth
+    - script.basement_mode_game_xbox
+    - script.basement_mode_game_ps3
+    - script.basement_mode_movie
+    - script.basement_mode_music
+    - script.basement_mode_normal_on
+    - script.basement_mode_normal_off
+
+#########################
+# Bedroom media control #
+#########################
+master_bedroom_media:
+  name: Bedroom Media Control
+  entities:
+    - script.br_tv_power
+    - script.br_tv_vol_up
+    - script.br_tv_vol_down
+    - script.br_tv_source_button
+    
+#########
+# Radio #
+#########
+radio:
+  name: Radio
+  entities:
+    - input_select.radio_station
+    - input_select.radio_speakers
+    - script.radio_play
+    - script.radio_stop
+
+########################
+# Living Room TV Group #
+########################
+living_room_tv_group:
+  name: Living Room TV control
+  entities:
+    - switch.lr_xbox_power
+    - switch.tv_living_room
+    - script.lr_tv_vol_up
+    - script.lr_tv_vol_down
+    - script.lr_receiver_on
+    - script.lr_receiver_off
+    
+##############
+# Test stuff #
+##############
+media_test:
+  name: Media Test
+  entities:
+    - script.lr_tv_on
+    - script.lr_tv_off
+    
+#####################################
+#           Work Stuff Tab          #
+#####################################
+work_stuff:
+  name: Work stuff
+  entities: 
+    - input_boolean.lunchtime_reminder
+    
+##################################
+#           Crypto Tab           #
+##################################
+crypto_group:
+  name: Cryptocurrencies
+  entities:
+    - sensor.bitcoin
+
+#############################################
+# Other groups not to be shown in front end #
+#############################################
+bathroom_lights:
+  name: Bathroom Lights
+  entities:
+    - light.guest_bathroom_light_level
+
+bedroom_lamps:
+  name: Bedroom Lamps
+  entities:
+    - switch.marks_bedside_lamp_switch
+    - switch.krystins_lamp
+
+porch_lights:
+  name: Porch Lights
+  entities:
+    - switch.back_porch_light_switch
+
+main_interior_lights:
+  name: Main Interior Lights
+  entities:
+    - light.kitchen_main_lights_level
+    - light.basement_main_lights_level
+    - light.living_room_lights_level
+    - switch.basement_middle_light_switch
+    - switch.living_room_lamp
+    - switch.garage_light_switch
+    - light.kitchen_cabinet_lights
+
+bedroom_lights:
+  name: Bedroom Lights
+  entities:
+    - switch.marks_bedside_lamp_switch
+    - switch.krystins_lamp
+
+on_before_sunset:
+  name: Things to turn on 1 hour before sunset
+  entities:
+    - switch.marks_bedside_lamp_switch
+    - light.kitchen_cabinet_lights

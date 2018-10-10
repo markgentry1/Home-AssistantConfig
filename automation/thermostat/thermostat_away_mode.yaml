@@ -1,0 +1,12 @@
+### Set thermostat to away mode when everyone is gone ###
+
+  alias: Thermostat Away Mode
+  trigger:
+    platform: state
+    entity_id: binary_sensor.people_home
+    to: 'off'
+  action:
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.nest
+        away_mode: 'on'

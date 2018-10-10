@@ -1,0 +1,18 @@
+### Turn off the bedroom floor fan at 5:00 am ###
+
+  alias: Turn off bedroom fan at 530am on weekdays
+  initial_state: False
+  trigger:
+    platform: time
+    at: '5:30:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: switch.turn_off
+    entity_id: switch.bedroom_floor_fan

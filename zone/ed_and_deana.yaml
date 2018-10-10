@@ -1,0 +1,7 @@
+### Ed and Deana's House Zone ###
+
+name: Ed and Deana's House
+latitude: !secret ed_and_deana_lat
+longitude: !secret ed_and_deana_long
+radius: 300
+icon: mdi:home-variant

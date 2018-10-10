@@ -1,0 +1,15 @@
+### Turns off the living room lamp when the TV turns off ###
+
+  alias: "Turn off LR lamp when TV turns off"
+  trigger:
+    platform: state
+    entity_id: media_player.living_room_tv
+    to: 'off'
+#  condition:           ## This currently isn't needed, as the lamp's status might not be current in HA ##
+#    condition: state
+#    entity_id: switch.living_room_lamp
+#    state: 'on'
+  action:
+    - delay: 0:05
+    - service: switch.turn_off
+      entity_id: switch.living_room_lamp

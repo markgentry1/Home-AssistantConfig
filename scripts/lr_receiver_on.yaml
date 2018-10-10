@@ -1,0 +1,8 @@
+### Turn on the audio receiver in the living room ###
+
+lr_receiver_on:
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_70
+      data:
+        packet:
+          - "JgBYAAABJZMRExE4ERQQFBE4ERQQOBE5ETgRFBA5EDkRFBA5EDgRFBETERQQOBEUERMRFBAUEBQQORE5EBQQOBI4ETgRORA5EQAE9wABJUkRAAw+AAElSRIADQU="

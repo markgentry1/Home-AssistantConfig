@@ -1,0 +1,13 @@
+### Proximity stuff ###
+
+  home_mark:
+    devices:
+      - device_tracker.gentry_p2
+    #tolerance: 50
+    unit_of_measurement: mi
+
+  home_krystin:
+    devices:
+      - device_tracker.gentry_krystin
+    #tolerance: 50
+    unit_of_measurement: mi

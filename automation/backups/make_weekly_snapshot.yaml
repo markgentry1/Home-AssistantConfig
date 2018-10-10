@@ -1,0 +1,25 @@
+### Creates a weekly full snapshot ###
+
+  alias: "Weekly snapshot backup"
+  trigger:
+    platform: time
+    at: '01:00:00'
+  condition:
+    condition: time
+    weekday:
+      - sun
+  action:
+    - service: hassio.snapshot_full
+      data_template:
+        name: "Snapshot {{ now().strftime('%Y-%m-%d') }}"
+    - service: hassio.addon_stdin
+      data:
+        addon: 7be23ff5_dropbox_sync
+        input:
+          command: upload        
+    - service: notify.push
+      data:
+        message: "Created backup Snapshot {{ now().strftime('%Y-%m-%d') }} successfully!"
+        title: "Backup success"
+        target: "Mark's Pixel 2"
+    - service: homeassistant.restart

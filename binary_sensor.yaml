@@ -1,0 +1,79 @@
+### Binary sensors ###
+
+  - platform: mqtt
+    name: "Garage Door Status"
+    state_topic: "garage/door/1/status"
+    payload_on: "open"
+    payload_off: "closed"
+    availability_topic: "GarHAge/availability"
+    device_class: opening
+    qos: 0
+
+  - platform: template
+    sensors:
+# If either "device" reports as home, this sensor returns 'on' #
+      mark_home:
+#        entity_id:
+#          - device_tracker.gentry_p2
+#          - device_tracker.marks_pixel_2
+#          - device_tracker.marks_pixel_2_bt
+        value_template: >-
+          {{ is_state('device_tracker.gentry_p2', 'home')
+             or is_state('device_tracker.marks_pixel_2', 'home')
+             or is_state('device_tracker.marks_pixel_2_bt', 'home') }}
+      krystin_home:
+#        entity_id: 
+#          - device_tracker.gentry_krystin
+#          - device_tracker.krystins_pixel_2
+        value_template: >-
+          {{ is_state('device_tracker.gentry_krystin', 'home')
+             or is_state('device_tracker.krystins_pixel_2', 'home') }}
+      motion:
+        value_template: >-
+          {{ is_state('binary_sensor.ecolink_motion_sensor_sensor', 'on')
+             or is_state('binary_sensor.guest_bathroom_motion_sensor_sensor', 'on') }}
+      people_home:
+#        entity_id:
+#          - binary_sensor.mark_home
+#          - binary_sensor.krystin_home
+        value_template: >-
+          {{ is_state('binary_sensor.mark_home', 'on')
+             or is_state('binary_sensor.krystin_home', 'on') }}
+
+# These below didn't work the way I intended. Leaving for future reference #
+
+#  - platform: hikvision
+#    host: 192.168.1.11
+#    name: Back Yard camera
+#    username: !secret hikvision_username
+#    password: !secret hikvision_password
+#    customize:
+#      motion:
+#        delay: 10
+#
+#  - platform: hikvision
+#    host: 192.168.1.12
+#    name: Back Porch Camera
+#    username: !secret hikvision_username
+#    password: !secret hikvision_password
+#    customize:
+#      motion:
+#        delay: 10
+#
+#  - platform: hikvision
+#    host: 192.168.1.13
+#    name: Front Porch camera
+#    username: !secret hikvision_username
+#    password: !secret hikvision_password
+#    customize:
+#      motion:
+#        delay: 10
+#
+#  - platform: hikvision
+#    host: 192.168.1.14
+#    name: Driveway camera
+#    username: !secret hikvision_username
+#    password: !secret hikvision_password
+#    customize:
+#      motion:
+#        delay: 10

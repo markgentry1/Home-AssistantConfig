@@ -1,0 +1,51 @@
+### camera.yaml ###
+
+  - platform: generic
+    still_image_url: https://radblast.wunderground.com/cgi-bin/radar/WUNIDS_map?station=BMX&brand=wui&num=1&delay=15&type=N0R&frame=0&scale=1.000&noclutter=0&showstorms=0&mapx=400&mapy=240&centerx=400&centery=240&transx=0&transy=0&showlabels=1&severe=0&rainsnow=0&lightning=0&smooth=0&rand=24815359&lat=0&lon=0&label=you
+    name: Current radar
+
+#  - platform: generic
+#    still_image_url: http://192.168.1.14/Streaming/channels/1/picture
+#    name: Driveway Camera
+#    username: !secret hikvision_username
+#    password: !secret hikvision_password
+
+  - platform: generic
+    still_image_url: http://192.168.1.12/Streaming/channels/1/picture
+    name: Back Porch Camera
+    username: !secret hikvision_username
+    password: !secret hikvision_password
+
+  - platform: generic
+    still_image_url: http://192.168.1.13/Streaming/channels/1/picture
+    name: Driveway Camera
+    username: !secret hikvision_username
+    password: !secret hikvision_password
+
+  - platform: generic
+    still_image_url: http://192.168.1.11/Streaming/channels/1/picture
+    name: Back Yard Camera
+    username: !secret hikvision_username
+    password: !secret hikvision_password
+
+  - platform: generic
+    name: Mark Map
+    still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.gentry_p2.attributes.latitude }},{{ states.device_tracker.gentry_p2.attributes.longitude }}&zoom=13&size=500x300&maptype=roadmap&markers=color:blue%7Clabel:P%7C{{ states.device_tracker.gentry_p2.attributes.latitude }},{{ states.device_tracker.gentry_p2.attributes.longitude }}
+    limit_refetch_to_url_change: true
+
+  - platform: generic
+    name: Krystin Map
+    still_image_url: https://maps.googleapis.com/maps/api/staticmap?center={{ states.device_tracker.gentry_krystin.attributes.latitude }},{{ states.device_tracker.gentry_krystin.attributes.longitude }}&zoom=13&size=500x300&maptype=roadmap&markers=color:blue%7Clabel:P%7C{{ states.device_tracker.gentry_krystin.attributes.latitude }},{{ states.device_tracker.gentry_krystin.attributes.longitude }}
+    limit_refetch_to_url_change: true
+    
+#  - platform: ffmpeg
+#    input: !secret camera_input_dahua
+# This was for a Dahua camera
+
+#  - platform: ffmpeg
+#    name: Front Porch Camera
+#    input: !secret camera_input_driveway
+
+  - platform: ffmpeg
+    name: Garage Camera
+    input: !secret camera_input_garage

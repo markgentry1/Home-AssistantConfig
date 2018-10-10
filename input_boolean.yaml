@@ -1,0 +1,10 @@
+### Input booleans ###
+
+  lunchtime_reminder:
+    name: Lunchtime reminder
+    initial: off
+    icon: mdi:clock
+  weather:
+    name: Lovelace Weather
+    icon: mdi:weather-cloudy
+    

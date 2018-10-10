@@ -1,0 +1,20 @@
+### Turn on the bedroom floor fan at 8:30 pm ###
+
+  alias: Turn on bedroom fan at 8:30pm
+  trigger:
+    - platform: time
+      at: '20:30:00'
+    - platform: state
+      entity_id: binary_sensor.people_home
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.people_home
+        state: 'on'
+      - condition: time
+        after: '20:30:00'
+  action:
+    service: switch.turn_on
+    entity_id: switch.bedroom_floor_fan

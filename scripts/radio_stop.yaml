@@ -1,0 +1,14 @@
+### Turn the radio on the Google Home Minis off ###
+
+radio_stop:
+  alias: Stop Radio
+  sequence:
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.home_group
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.kitchen_speaker
+    - service: media_player.media_stop
+      data:
+        entity_id: media_player.basement_speaker

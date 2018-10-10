@@ -1,0 +1,29 @@
+### Play the radio on the Google Home Minis ###
+
+radio_play:
+  alias: Play Radio on Speakers
+  sequence:
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.home_group
+        volume_level: '0.5'
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.kitchen_speaker
+        volume_level: '0.5'
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.basement_speaker
+        volume_level: '0.5'
+    - service: media_player.play_media
+      data_template:
+        entity_id: >
+          {% if is_state("input_select.radio_speakers", "All Speakers") %} media_player.home_group
+          {% elif is_state("input_select.radio_speakers", "Kitchen") %} media_player.kitchen_speaker
+          {% elif is_state("input_select.radio_speakers", "Downstairs") %} media_player.basement_speaker
+          {% endif %}
+        media_content_id: >
+          {% if is_state("input_select.radio_station", "Arrow Classic Rock") %} http://91.221.151.155/listen.mp3
+          {% elif is_state("input_select.radio_station", "Alternative Hits") %} http://rfcmedia.streamguys1.com/alternativehits.mp3
+          {% endif %}
+        media_content_type: 'music'

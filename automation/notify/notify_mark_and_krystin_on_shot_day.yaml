@@ -1,0 +1,18 @@
+### Send Push notification to Mark and Krystin on shot days at 6pm ###
+
+  alias: "Notify - Remind about shot"
+  trigger:
+    platform: time
+    at: '19:00:00'
+  condition:
+    condition: time
+    weekday:
+      - mon
+      - wed
+      - fri
+  action:
+    service: notify.push
+    data:
+      message: "Tonight is medicine night!"
+      title: "Reminder"
+      target: ["Mark's Pixel 2", "Krystin's Pixel 2"]

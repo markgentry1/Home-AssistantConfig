@@ -1,0 +1,7 @@
+### Mark's Parent's house Zone ###
+
+name: "Mark's Parent's house"
+latitude: !secret marks_parents_lat
+longitude: !secret marks_parents_long
+radius: 200
+icon: mdi:home-variant

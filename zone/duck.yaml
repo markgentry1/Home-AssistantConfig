@@ -1,0 +1,7 @@
+### Duck Springs Elementary School ########
+
+name: Duck Springs Elementary School
+latitude: !secret duck_lat
+longitude: !secret duck_long
+radius: 1000
+icon: mdi:chair-school

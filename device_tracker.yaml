@@ -1,0 +1,14 @@
+### Device trackers ###
+
+  - platform: owntracks
+
+  - platform: nmap_tracker
+    hosts: 192.168.1.1/24
+    interval_seconds: 30
+
+#  - platform: bluetooth_tracker
+  
+  - platform: ping
+    hosts:
+      lr_tv_ping: 192.168.1.53
+#      br_tv_ping: 192.168.1.54

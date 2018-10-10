@@ -1,0 +1,19 @@
+### Turn off the bedroom TV if it comes on while everyone is gone ###
+
+  alias: "Turn off bedroom TV if it's on while we're gone"
+  trigger:
+    platform: state
+    entity_id: media_player.bedroom_tv
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: binary_sensor.people_home
+    state: 'off'
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_tv
+    - service: notify.push
+      data:
+        message: "Bedroom TV was turned on while no one was at home. Don't worry though, I've turned it off for you."
+        title: "Update"
+        target: "Mark's Pixel 2"

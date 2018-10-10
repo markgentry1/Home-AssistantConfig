@@ -1,0 +1,72 @@
+### Lovelace fun stuff ###
+
+resources:
+  - url: /local/custom_ui/weather-card.js
+    type: js
+
+title: My Awesome Home
+# Exclude entities from "Unused entities" view
+#excluded_entities:
+#  - weblink.router
+views:
+    # View tab title.
+  - title: Home Assistant
+    # Optional unique id for direct access /lovelace/${id}
+    id: example
+    # Each view can have a different theme applied.
+    theme: dark-mode
+    # The cards to show on this view.
+    cards:
+        # The filter card will filter entities for their state
+      - type: entity-filter
+        entities:
+#          - device_tracker.gentry_krystin
+          - binary_sensor.mark_home
+          - binary_sensor.krystin_home
+#          - device_tracker.gentry_p2
+        state_filter:
+#          - 'home'
+          - 'on'
+        card_config:
+          type: glance
+          title: People that are home
+
+        # The picture entity card will represent an entity with a picture
+      - type: picture-entity
+        image: http://lssweb.info/wp-content/uploads/2017/11/best-25-under-cabinet-lighting-ideas-on-pinterest-cabinet-kitchen-under-cabinet-lighting-led.jpg
+        entity: light.kitchen_cabinet_lights
+
+    # Specify a tab icon if you want the view tab to be an icon.
+  - icon: mdi:home-assistant
+    # Title of the view. Will be used as the tooltip for tab icon
+    title: Second view
+    cards:
+        # Entities card will take a list of entities and show their state.
+      - type: entities
+        # Title of the entities card
+        title: Example
+        # The entities here will be shown in the same order as specified.
+        # Each entry is an entity ID or a map with extra options.
+        entities:
+          - light.living_room_lights_level
+          - switch.back_porch_light_switch
+          - entity: light.guest_bathroom_light_level
+            # Override the name to use
+            name: Guest BR Lights
+
+        # The markdown card will render markdown text.
+      - type: markdown
+        title: Lovelace
+        content: >
+          Welcome to your **Lovelace UI**.
+          
+  - icon: mdi:weather-cloudy
+    id: weather
+    title: Weather
+    cards:
+#      - type: "custom:weather-card"                    #New way that works, but doesn't display current weather condition text#
+#        entity_weather: weather.yweather
+#        entity_sun: sun.sun
+                                                        #Old way that works even better#
+      - type: 'custom:custom-weather-animated'
+        entity: input_boolean.weather

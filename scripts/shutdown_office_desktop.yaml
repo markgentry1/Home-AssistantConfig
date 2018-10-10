@@ -1,0 +1,9 @@
+### Shut down the Office Desktop remotely ###
+
+shutdown_office_desktop:
+  alias: Shutdown Office Desktop
+  sequence:
+    - service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: OfficeDesktop

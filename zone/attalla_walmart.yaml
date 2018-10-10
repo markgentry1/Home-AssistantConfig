@@ -1,0 +1,7 @@
+### Attalla Walmart Zone ###
+
+name: Attalla Walmart
+latitude: !secret attalla_walmart_lat
+longitude: !secret attalla_walmart_long
+radius: 400
+icon: mdi:cart

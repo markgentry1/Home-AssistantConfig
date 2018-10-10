@@ -1,0 +1,9 @@
+### Turn the volume up on the basement audio receiver ###
+
+basement_audio_receiver_vol_up:
+  alias: "Turn volume up"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_76
+      data:
+        packet:
+          - "JgCQAAABJZURExE5ERQRFBE4ERQRORA5ETkRFBA5ETkRExE5ETkRExEUETkRFBETERQRFBEUERQQOREUETkQORE5ETgRORE5EAAE9wABJZURFBE5ERMRFBE5ERQQORE5ETgRFBE5ETgRFBE5EDkRFBEUETgRFBEUERMRFBEUERQROBEUETkROBE5ETgRORE5EQANBQAAAAAAAAAA"

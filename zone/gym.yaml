@@ -1,0 +1,7 @@
+### Gym Zone ###
+
+name: Planet Fitness
+latitude: !secret gym_lat
+longitude: !secret gym_long
+radius: 200
+icon: mdi:dumbbell

@@ -1,0 +1,19 @@
+### Automatically turn any lights off that are left on after everyone has been gone for 10 minutes ###
+
+  alias: "Turn off lights if everyone is gone for 10 minutes"
+  trigger:
+    platform: state
+    entity_id: binary_sensor.people_home
+    to: 'off'
+    for:
+      minutes: 10
+  action:
+    - service: homeassistant.turn_off
+      entity_id: 
+        - group.bathroom_lights
+        - group.bedroom_lights
+        - group.main_interior_lights
+        - group.fans
+    - service: cover.close_cover
+      entity_id: 
+        - cover.garage_door

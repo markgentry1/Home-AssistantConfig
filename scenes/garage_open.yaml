@@ -1,0 +1,10 @@
+### Garage open scene ###
+
+  name: garage open
+  entities:
+    switch.basement_middle_light_switch:
+      state: on
+    cover.garage_door:
+      state: open
+    switch.garage_light_switch:
+      state: on

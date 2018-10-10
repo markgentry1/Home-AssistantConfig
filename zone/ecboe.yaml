@@ -1,0 +1,7 @@
+### ecboe ########
+
+name: Etowah County Board of Education
+latitude: !secret ecboe_lat
+longitude: !secret ecboe_long
+radius: 200
+icon: mdi:bank

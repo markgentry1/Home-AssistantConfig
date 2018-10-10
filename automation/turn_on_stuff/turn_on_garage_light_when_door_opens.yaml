@@ -1,0 +1,10 @@
+### Turn on the Garage light when the garage door opens ###
+
+  alias: "Turn on garage light with garage door"
+  trigger:
+    platform: state
+    entity_id: cover.garage_door
+    to: 'open'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.garage_light_switch

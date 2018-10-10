@@ -1,0 +1,24 @@
+### Show groups in frontend default view grouped by lights ###
+
+frontend_light_view:
+  sequence:
+    - service: group.set_visibility
+      entity_id:
+        - group.main_lights
+        - group.lamps
+        - group.fans
+        - group.sensors
+        - group.presence
+      data:
+        visible: true
+    - service: group.set_visibility
+      entity_id:
+        - group.kitchen
+        - group.living_room
+        - group.master_bedroom
+        - group.office
+        - group.guest_bathroom
+        - group.basement
+        - group.back_porch
+      data:
+        visible: false

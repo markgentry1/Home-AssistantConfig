@@ -1,0 +1,9 @@
+### Send notification to Mark to let him know that his scene was successful ###
+
+notify_success:
+  alias: "Notify Mark - successful script"
+  sequence: 
+    - service: notify.push
+      data: 
+        message: "Success!"
+        target: "Mark's Pixel 2"

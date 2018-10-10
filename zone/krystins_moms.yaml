@@ -1,0 +1,7 @@
+### Krystin's mom's house zone ###
+
+name: "Krystin's mom's house"
+latitude: !secret krystins_mom_lat
+longitude: !secret krystins_mom_long
+radius: 400
+icon: mdi:home-variant

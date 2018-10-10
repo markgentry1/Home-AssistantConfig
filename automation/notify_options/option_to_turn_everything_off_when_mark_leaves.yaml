@@ -1,0 +1,18 @@
+### Option to turn everything off when Mark is leaving, via actionable notification ###
+
+  alias: "Option to turn everything off"
+  hide_entity: True
+  trigger:
+    platform: event
+    event_type: html5_notification.clicked
+    event_data:
+      action: turn_everything_off
+  action:
+    - service: scene.turn_on
+      entity_id: scene.turn_everything_off
+#    - service: notify.push
+#      data: 
+#        message: "Turned everything off!"
+#        title: "Success!"
+#        target: "Mark's Pixel 2"
+## I'm getting tired of this notification. I may re-enable it in the future. Or I may not. Don't tell me how to live my life.

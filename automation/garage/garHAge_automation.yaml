@@ -1,0 +1,12 @@
+### This is the recommended automation for GarHAge from here:
+### https://github.com/marthoc/GarHAge
+
+  alias: Update garage door state on startup
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: mqtt.publish
+      data: 
+        topic: "garage/door/1/action"
+        payload: "STATE"

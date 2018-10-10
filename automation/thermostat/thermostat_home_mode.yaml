@@ -1,0 +1,12 @@
+### Sets thermostat to home mode ###
+
+  alias: Thermostat Home Mode
+  trigger:
+    platform: state
+    entity_id: binary_sensor.people_home
+    to: 'on'
+  action:
+    - service: climate.set_away_mode
+      data:
+        entity_id: climate.nest
+        away_mode: 'off'

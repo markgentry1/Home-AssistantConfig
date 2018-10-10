@@ -1,0 +1,39 @@
+### Cover ###
+
+#  - platform: myq
+#    username: !secret myq_username
+#    password: !secret myq_password
+#    type: liftmaster
+### I'm removing this since I have added the MQTT opener
+   
+  - platform: mqtt
+    name: "Garage Door Control"
+    state_topic: "garage/door/1/status"
+    command_topic: "garage/door/1/action"
+    availability_topic: "GarHAge/availability"
+    qos: 0
+    optimistic: false
+    retain: false
+    payload_open: "OPEN"
+    payload_close: "CLOSE"
+    payload_stop: "STATE"
+    state_open: "open"
+    state_closed: "closed"
+    payload_available: "online"
+    payload_not_available: "offline"
+    
+  - platform: template
+    covers:
+      garage_door: 
+        friendly_name: "Garage Door"
+        value_template: "{{ states('cover.garage_door_control') }}"
+        open_cover:
+          service: script.open_garage_door
+        close_cover:
+          service: script.close_garage_door
+        icon_template: >-
+          {% if is_state('cover.garage_door_control', 'open') %}
+            mdi:garage-open
+          {% else %}
+            mdi:garage
+          {% endif %}

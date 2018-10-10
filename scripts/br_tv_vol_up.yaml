@@ -1,0 +1,9 @@
+### Turn bedroom TV volume up ###
+
+br_tv_vol_up:
+  alias: "Bedroom volume up"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_77
+      data:
+        packet:
+          - "JgCMAJeSEzcTNxM2FBETEhMSExITEhM3EzcTNhMSExITEhMSExITNxM2EzcTEhMSExITEhMSExITERQREzcTNxM2FDYUNhMABgaXkhM3EzYUNhMSExITEhMSExITNhQ2EzcTEhMSExITEhMREzcTNxM3ExITEhMRExITEhMSExITEhM3EzYTNxM3EzcTAA0FAAAAAAAAAAAAAAAA"

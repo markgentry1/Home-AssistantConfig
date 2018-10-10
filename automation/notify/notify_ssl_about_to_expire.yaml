@@ -1,0 +1,12 @@
+### Notify when SSL Certificate is about to expire ###
+
+  alias: Notify Mark when SSL Cert is about to expire
+  trigger: 
+    platform: numeric_state
+    entity_id: sensor.ssl_certificate_expiry
+    value_template: '{{ states.sensor.ssl_certificate_expiry.state }}'
+    below: 10
+  action:
+    service: notify.push
+    data: 
+      message: "Your SSL Certificate is set to expire in {{ states.sensor.ssl_certificate_expiry.state }} days!"

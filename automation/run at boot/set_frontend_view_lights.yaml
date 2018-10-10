@@ -1,0 +1,9 @@
+### Set the default view for the frontend to show groups organized by lights ###
+
+  alias: "Show light view at boot"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: script.turn_on
+    entity_id: script.frontend_light_view

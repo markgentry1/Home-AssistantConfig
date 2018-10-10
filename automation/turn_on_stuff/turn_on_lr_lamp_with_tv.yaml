@@ -1,0 +1,22 @@
+### Turn on the Living Room Lamp when the Living Room TV turns on 30 minutes before sunset or after ###
+
+  alias: Turn on LR Lamp with TV when dark
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_tv
+      to: 'on'
+    - platform: sun
+      event: sunset
+      offset: '-0:30:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: sun
+        after: sunset
+        after_offset: "-0:30:00"
+      - condition: state
+        entity_id: media_player.living_room_tv
+        state: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.living_room_lamp

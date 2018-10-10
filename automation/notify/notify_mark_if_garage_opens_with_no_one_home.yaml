@@ -1,0 +1,19 @@
+### Send notifications if the garage opens while no one is home ###
+
+  alias: Notify if garage opens while no one is home
+  trigger:
+    platform: state
+    entity_id: cover.garage_door
+    to: 'open'
+    for: 
+      minutes: 2
+  condition:
+    condition: state
+    entity_id: binary_sensor.people_home
+    state: 'off'
+  action:
+    - service: notify.push
+      data:
+        message: "The garage door looks like it's open at {{ as_timestamp(now()) | timestamp_custom('%I:%M%p', true) }},  but I'm not seeing anyone at home."
+        title: "Alert!"
+        target: ["Mark's Pixel 2", "Mark's T560"]

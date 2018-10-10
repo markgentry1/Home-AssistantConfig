@@ -1,0 +1,15 @@
+### Remind me when it's been 29 minutes at lunchtime so that I don't forget to clock back in ###
+
+  alias: "Lunchtime reminder"
+  trigger:
+    platform: state
+    entity_id: input_boolean.lunchtime_reminder
+    to: 'on'
+  action:
+    - delay: 0:29
+    - service: notify.push
+      data:
+        message: "Clock back in! It's been 29 minutes, as of {{ as_timestamp(now()) | timestamp_custom('%I:%M%p', true) }}."
+        target: ["Mark's Pixel 2", "Mark's T560"]
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.lunchtime_reminder

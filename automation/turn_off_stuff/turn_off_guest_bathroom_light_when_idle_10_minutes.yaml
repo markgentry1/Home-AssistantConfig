@@ -1,0 +1,12 @@
+### Turn off the guest bathroom light when there is no motion for 10 minutes ###
+
+  alias: Turn off guest bathroom light when idle for 10 minutes
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.guest_bathroom_motion_sensor_sensor
+    to: 'off'
+    for:
+      minutes: 10
+  action:
+    service: light.turn_off
+    entity_id: light.guest_bathroom_light_level

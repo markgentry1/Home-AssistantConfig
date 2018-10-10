@@ -1,0 +1,16 @@
+### Notify Mark when Krystin gets home ###
+
+# This has been more of a test that I'm leaving for reference #
+
+  alias: Notify when Krystin gets home
+  initial_state: False
+  trigger:
+    platform: state
+    entity_id: device_tracker.gentry_krystin
+    to: 'home'
+  action:
+    service: notify.push
+    data:
+      message: "Krystin has arrived at home at {{ as_timestamp(now()) | timestamp_custom('%I:%M%p', true) }}."
+      title: "Update"
+      target: "Mark's Pixel 2"

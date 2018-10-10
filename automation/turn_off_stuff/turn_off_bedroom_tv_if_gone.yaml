@@ -1,0 +1,21 @@
+### Turn off the bedroom TV if it's still on and everyone has been gone for 10 minutes ###
+
+  alias: "Turn off bedroom TV when everyone is gone for 10 minutes"
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.people_home
+    to: 'off'
+    for:
+      minutes: 10
+  condition:
+    condition: state
+    entity_id: media_player.bedroom_tv
+    state: 'on'
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.bedroom_tv
+    - service: notify.push
+      data:
+        message: "Bedroom TV is still on after everyone is gone! Don't worry though, I turned it off for you."
+        title: "Update"
+        target: "Mark's Pixel 2"

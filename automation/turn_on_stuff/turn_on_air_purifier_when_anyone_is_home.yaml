@@ -1,0 +1,10 @@
+### Turn on the air purifier when anyone is at home ###
+
+  alias: "Turn on air purifier when someone is home"
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.people_home
+    to: 'on'
+  action:
+    service: switch.turn_on
+    entity_id: switch.air_purifier

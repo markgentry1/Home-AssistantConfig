@@ -1,0 +1,10 @@
+### Garage close scene ###
+
+  name: garage close
+  entities:
+    cover.garage_door:
+      state: closed
+    switch.basement_middle_light_switch:
+      state: off
+    switch.garage_light_switch:
+      state: off

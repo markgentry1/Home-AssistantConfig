@@ -1,0 +1,10 @@
+### History Graph ###
+
+  gr1: 
+    name: Temperature Graph
+    entities:
+      - sensor.nest_thermostat_temperature
+      - sensor.nest_thermostat_target
+      - sensor.dark_sky_temperature
+    hours_to_show: 24
+    refresh: 60

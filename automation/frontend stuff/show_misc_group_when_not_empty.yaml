@@ -1,0 +1,12 @@
+### Show the misc group in frontend when it has data ###
+
+  alias: "Show misc group in frontend when it has data"
+  trigger:
+    - platform: state
+      entity_id: sensor.ups
+      from: '0'
+  action:
+    service: group.set_visibility
+    entity_id: group.misc
+    data:
+      visible: true

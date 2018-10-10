@@ -1,0 +1,13 @@
+### Notify Mark when the smoke alarm goes off ###
+
+  alias: Notify Mark when smoke alarm goes off
+  trigger:
+    platform: state
+    entity_id: sensor.smoke_alarm
+    from: 'Idle'
+  action:
+    service: notify.push
+    data:
+      message: "Smoke alarm alert! {{ as_timestamp(now()) | timestamp_custom('%I:%M%p', true) }}"
+      title: "Alert!"
+      target: "Mark's Pixel 2"

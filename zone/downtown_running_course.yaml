@@ -1,0 +1,7 @@
+### Downtown running course zone ###
+
+name: Downtown Running Course
+latitude: !secret downtown_course_lat
+longitude: !secret downtown_course_long
+radius: 800
+icon: mdi:run

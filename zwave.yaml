@@ -1,0 +1,21 @@
+### zwave ###
+
+  usb_path: /dev/ttyACM0
+  polling_interval: 10000
+  device_config:
+    light.guest_bathroom_light_level:
+      polling_intensity: 1
+      refresh_value: true
+      delay: 5
+    light.basement_main_lights_level:
+      polling_intensity: 1
+      refresh_value: true
+      delay: 5
+    light.living_room_lights_level:
+      polling_intensity: 1
+      refresh_value: true
+      delay: 5
+    light.kitchen_main_lights_level:
+      polling_intensity: 1
+      refresh_value: true
+      delay: 5

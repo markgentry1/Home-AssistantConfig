@@ -1,0 +1,16 @@
+### Zwave light test ###
+
+# Testing this one as well. Leaving for future reference #
+
+  alias: Testing zwave stuff
+  hide_entity: True
+  initial_state: 'off'
+  trigger:
+    platform: state
+    entity_id: light.guest_bathroom_light_level
+    to: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.guest_bathroom_light_level
+    data:
+      brightness: 50

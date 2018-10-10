@@ -1,0 +1,17 @@
+### Return from basement mode and turn everything off ###
+
+basement_mode_normal_off:
+  alias: "Normal mode, lights off"
+  sequence:
+    - service: light.turn_off
+      data:
+        entity_id: light.basement_main_lights_level
+        transition: 4
+    - service: switch.turn_off
+      data:
+        entity_id: switch.basement_middle_light_switch
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.basement_projector_off
+          - script.basement_audio_receiver_on_off

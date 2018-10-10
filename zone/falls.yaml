@@ -1,0 +1,7 @@
+### Noccalula Falls Zone ###
+
+name: Noccalula Falls
+latitude: !secret falls_lat
+longitude: !secret falls_long
+radius: 600
+icon: mdi:run

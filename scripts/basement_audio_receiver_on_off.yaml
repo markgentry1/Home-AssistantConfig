@@ -1,0 +1,9 @@
+### Toggles power for the basement audio receiver ###
+
+basement_audio_receiver_on_off:
+  alias: "Toggle basement audio receiver power"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_76
+      data:
+        packet:
+          - "JgBQAAABJZURExE5ERQRFBE4ERQRORA5ERQRFBE4ETkRFBE4ETkRFBE4ETkRFBE2ExQRFBE4ETkRFBEUEDkRFBE4ETkRFBEUEQAFGwABJUwRAA0FAAAAAAAAAAA="

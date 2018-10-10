@@ -1,0 +1,9 @@
+### Press the TV Source button in the bedroom ###
+
+br_tv_source_button:
+  alias: "Bedroom TV Source"
+  sequence: 
+    - service: switch.broadlink_send_packet_192_168_1_77
+      data:
+        packet:
+          - "JgDSAJaTEzcTNxM3ExEUERMSExITEhM3EzcTNhMSExITEhMSExITNxMSExETEhMSExITEhMSExITNhQ2EzcTNxM3EzYTNxMABgaVlBM3EzYUNhMSExITEhMSExITNhQ2EzcTEhMSExITEhMSEzYTEhMSExITEhMSExITEhMSEzYTNxM3EzcTNhQ2EzcTAAYGl5ITNxM2EzcTEhMSExITEhMSFTQTNxM2FBITEhMSFRATERU1ExIVEBUQExITEhMSExITERU1EzcTNxM2FDYTNxM3EwANBQAAAAAAAA=="

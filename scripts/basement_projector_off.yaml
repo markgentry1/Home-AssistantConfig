@@ -1,0 +1,14 @@
+### Turns the basement projector off ###
+
+basement_projector_off:
+  alias: "Turn Projector Off"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_76
+      data:
+        packet:
+          - "JgBQAAABJ5YRFBE5ERUQFRE5ETkSFBEUETkRFRE5EToQFREUETkROhEUETkROhE5ERUQOhEUERQROhEUERQSExI5ERQRORE6EQAFDAABJ0wRAA0FAAAAAAAAAAA="
+    - delay: 00:00:03
+    - service: switch.broadlink_send_packet_192_168_1_76
+      data:
+        packet:
+          - "JgBQAAABJ5YRFBE5ERUQFRE5ETkSFBEUETkRFRE5EToQFREUETkROhEUETkROhE5ERUQOhEUERQROhEUERQSExI5ERQRORE6EQAFDAABJ0wRAA0FAAAAAAAAAAA="    

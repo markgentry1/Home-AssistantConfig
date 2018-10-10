@@ -1,0 +1,9 @@
+### Turn bedroom TV volume down ###
+
+br_tv_vol_down:
+  alias: "Bedroom Volume Down"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_77
+      data:
+        packet:
+          - "JgCMAJWRFTQZMRY1FRAYDRgNFw8UERQ1GDIYMhgPExEUERcNGA0YMhc0FBEUNRgNGA0YDxMRFBAYDRgyGA8TNhQ1GTEYNBQABfGZjhc0FDUYMhgNGA0WEBgMGQwWNRgxGTEWEBgMGQ4XDBYQGDEYMhYPGTEYDhUQGAwYDhUPGQwWNhQPGTEWNRgxGTEWAA0FAAAAAAAAAAAAAAAA"

@@ -1,0 +1,18 @@
+### option to turn off basement light from actionable notification ###
+
+  alias: "Option to turn off basement light, via html5 notifier"
+  hide_entity: True
+  trigger:
+    platform: event
+    event_type: html5_notification.clicked
+    event_data:
+      action: turn_off_basement_light
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.basement_middle_light_switch
+#    - service: notify.push
+#      data:
+#        message: "Turned off basement light, I think."
+#        title: "Update"
+#        target: "Mark's Pixel 2"
+## I'm getting tired of this notification. I may re-enable it in the future. Or I may not. Don't tell me how to live my life.

@@ -1,0 +1,27 @@
+### Turn on the guest bathroom light when there is motion ###
+
+  alias: Turn on guest bathroom light with motion
+#  initial_state: False
+  trigger:
+    platform: state
+    entity_id: binary_sensor.guest_bathroom_motion_sensor_sensor
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: light.guest_bathroom_light_level
+    state: 'off'
+  action:
+    service: light.turn_on
+    entity_id: light.guest_bathroom_light_level
+    data_template: 
+      brightness: >
+        {%- if now().strftime('%H')| int >= 22 %}
+          127
+        {%- elif now().strftime('%H')| int >= 6 %}
+          255
+        {%- elif now().strftime('%H')| int >= 5 %}
+          127
+        {%- elif now().strftime('%H')| int < 5 %}
+          51
+        {%- endif %}
+      transition: 3

@@ -1,0 +1,21 @@
+### Set the theme back to default at sunrise ###
+
+# I didn't like the way this actually worked. Leaving incase I change my mind #
+  alias: "Theme - Set"
+  initial_state: False
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: sun
+      event: sunrise
+    - platform: sun
+      event: sunset
+  action:
+    - service: frontend.set_theme
+      data_template:
+        name: >
+          {%- if is_state('sun.sun','above_horizon') -%}
+            default
+          {%- else -%}
+            darkred
+          {%- endif -%}

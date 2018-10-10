@@ -1,0 +1,23 @@
+### Turn on the basement middle light when motion is detected in the stairway ###
+
+  alias: Turn on basement light with motion
+  trigger: 
+    platform: state
+    entity_id: binary_sensor.ecolink_motion_sensor_sensor
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: switch.basement_middle_light_switch
+        state: 'off'
+        for:
+          hours: 0
+          minutes: 1
+          seconds: 0
+      - condition: state
+        entity_id: binary_sensor.people_home
+        state: 'on'
+  action:
+    service: homeassistant.turn_on
+    entity_id: switch.basement_middle_light_switch

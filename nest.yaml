@@ -1,0 +1,4 @@
+### Nest ###
+
+  client_id: !secret nest_product_id
+  client_secret: !secret nest_product_secret

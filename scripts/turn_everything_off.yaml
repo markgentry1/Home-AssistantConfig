@@ -1,0 +1,29 @@
+### Script for turning everything off ##3
+
+turn_everything_off:
+  alias: "Turn everything off"
+  sequence:
+    - service: switch.turn_off
+      entity_id: switch.marks_bedside_lamp_switch
+    - service: switch.turn_off
+      entity_id: switch.krystins_lamp
+    - service: switch.turn_off
+      entity_id: switch.living_room_lamp
+    - service: switch.turn_off
+      entity_id: switch.bedroom_floor_fan
+    - service: switch.turn_off
+      entity_id: switch.basement_middle_light_switch
+    - service: switch.turn_off
+      entity_id: switch.garage_light_switch
+    - service: light.turn_off
+      entity_id: light.basement_main_lights_level
+    - service: light.turn_off
+      entity_id: light.kitchen_main_lights_level
+    - service: light.turn_off
+      entity_id: light.guest_bathroom_light_level
+    - service: light.turn_off
+      entity_id: light.kitchen_cabinet_lights
+    - service: light.turn_off
+      entity_id: light.living_room_lights_level
+    - service: cover.close_cover
+      entity_id: cover.garage_door

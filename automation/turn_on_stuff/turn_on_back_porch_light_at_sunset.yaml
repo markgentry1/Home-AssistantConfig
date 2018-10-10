@@ -1,0 +1,9 @@
+### At sunset, turn the back porch light on ###
+
+  alias: "Turn on back porch light at sunset"
+  trigger:
+    platform: sun
+    event: sunset
+  action: 
+    service: homeassistant.turn_on
+    entity_id: group.porch_lights

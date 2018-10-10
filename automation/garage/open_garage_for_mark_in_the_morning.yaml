@@ -1,0 +1,27 @@
+### Open the garage for Mark in the morning during the week, but only between 7:15-8:00am, when there is motion at the stairs ###
+
+  alias: Open garage door for Mark on work days
+  trigger:
+    platform: state
+    entity_id: binary_sensor.ecolink_motion_sensor_sensor
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.mark_home
+        state: 'on'
+      - condition: time
+        after: '06:45:00'
+        before: '08:00:00'
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+  action:
+    - service: cover.open_cover
+      entity_id: cover.garage_door
+    - service: homeassistant.turn_on
+      entity_id: switch.garage_light_switch

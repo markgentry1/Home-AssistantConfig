@@ -1,0 +1,10 @@
+### Set the default view for the frontend to show groups organized by rooms ###
+
+  alias: "Show room view at boot"
+  initial_state: false
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: script.turn_on
+    entity_id: script.frontend_room_view

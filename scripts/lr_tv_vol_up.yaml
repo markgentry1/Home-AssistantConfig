@@ -1,0 +1,8 @@
+### Turn the volume up on the audio receiver in the living room by 1 ###
+
+lr_tv_vol_up:
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_70
+      data:
+        packet:
+          - "JgBYAAABKJAUEBI3ExIVDxI3EhISOBU0EjcSEhY0ETgSEhY0EjcSEhISEjgRExISEhIWDxISEhISNxETEzcSNxI3FjQSNxI3EgAE9gABKUYSAAw9AAEoRxIADQU="

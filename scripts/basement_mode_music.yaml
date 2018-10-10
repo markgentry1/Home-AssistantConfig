@@ -1,0 +1,22 @@
+### Music mode for downstairs ###
+
+basement_mode_music:
+  alias: "Music Mode"
+  sequence: 
+    - service: light.turn_on
+      data:
+        entity_id: light.basement_main_lights_level
+        brightness: 255
+    - service: switch.turn_on
+      data:
+        entity_id: switch.basement_middle_light_switch
+    - service: script.turn_on
+      data:
+         entity_id:
+           - script.basement_projector_on
+           - script.basement_audio_receiver_on_off
+    - delay: 00:00:05
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.basement_audio_receiver_input_bluetooth

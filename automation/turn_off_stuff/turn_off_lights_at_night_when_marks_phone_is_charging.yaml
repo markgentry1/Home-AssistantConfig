@@ -1,0 +1,31 @@
+### turn lights off at night when marks phone is already charging at 9pm ###
+
+  alias: Goodnight
+  trigger: 
+    - platform: time
+      at: '21:00:00'
+    - platform: state
+      entity_id: binary_sensor.mark_charging
+      to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.mark_charging
+        state: 'on'
+      - condition: time
+        after: '21:00:00'
+        before: '02:00:00'
+      - condition: state
+        entity_id: binary_sensor.people_home
+        state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:
+        - group.bedroom_lights
+        - group.main_interior_lights
+    - service: cover.close_cover
+      entity_id: 
+        - cover.garage_door
+
+        

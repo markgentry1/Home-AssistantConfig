@@ -1,0 +1,9 @@
+### Turn off the back porch light at 8:45pm ###
+
+  alias: "Turn off back porch light 8:45pm"
+  trigger: 
+    platform: time
+    at: '21:30:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.porch_lights

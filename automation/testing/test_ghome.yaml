@@ -1,0 +1,15 @@
+### Testing GHome ###
+
+# As you can tell, this is a test. Leaving for future reference #
+
+  alias: Testing GHome stuff
+  hide_entity: True
+  initial_state: False
+  trigger:
+    platform: time
+    at: '19:16:00'
+  action:
+    service: tts.google_say
+    entity_id: media_player.kitchen_speaker
+    data:
+      message: 'Testing 1, 2, 3.'

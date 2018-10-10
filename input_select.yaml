@@ -1,0 +1,37 @@
+### Input select ###
+
+  mark_drive_time:
+    name: "Mark's driving time"
+    options:
+      - Attalla Walmart
+      - Cornerstone
+      - Downtown running course
+      - Duck Springs Elementary
+      - ECBOE
+      - Ed and Deana's
+      - East Gadsden Walmart
+      - Home
+      - Noccalula Falls
+      - Planet Fitness
+      - Randy and Dana's
+      - Alan and Ann's
+    initial: Home
+    icon: mdi:car
+
+  radio_station:
+    name: "Radio Station"
+    options:
+      - "Select Station:"
+      - "Arrow Classic Rock"
+      - "Alternative Hits"
+    initial: "Select Station:"
+    icon: mdi:radio
+      
+  radio_speakers:
+    name: "Radio Speakers"
+    options:
+      - All Speakers
+      - Kitchen
+      - Downstairs
+    initial: Kitchen
+    icon: mdi:speaker

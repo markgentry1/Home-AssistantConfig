@@ -1,0 +1,18 @@
+### Hide the misc group in the frontend when it has no data ###
+
+  alias: "Hide misc group when no data"
+  trigger:
+    - platform: state
+      entity_id: sensor.ups
+      to: '0'
+    - platform: homeassistant
+      event: start
+  condition: 
+    - condition: state
+      entity_id: sensor.ups
+      state: '0'
+  action:
+    service: group.set_visibility
+    entity_id: group.misc
+    data:
+      visible: false

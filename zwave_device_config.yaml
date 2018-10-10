@@ -1,0 +1,4 @@
+zwave.ecolink_motion_sensor:
+  ignored: false
+  polling_intensity: 2
+

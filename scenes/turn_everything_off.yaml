@@ -1,0 +1,32 @@
+### Turn everything off scene ###
+
+  name: Turn everything off
+  entities:
+# Lamps #
+    switch.marks_bedside_lamp_switch:
+      state: off
+    switch.krystins_lamp:
+      state: off
+    switch.living_room_lamp:
+      state: off
+# Fans #
+    switch.bedroom_floor_fan:
+      state: off
+# Main Lights # 
+    light.basement_main_lights_level:
+      state: off   
+    switch.basement_middle_light_switch:
+      state: off
+    light.kitchen_main_lights_level:
+      state: off
+    light.guest_bathroom_light_level:
+      state: off
+    light.living_room_lights_level:
+      state: off
+    light.kitchen_cabinet_lights:
+      state: off
+# Garage #
+    cover.garage_door:
+      state: closed
+    switch.garage_light_switch:
+      state: off

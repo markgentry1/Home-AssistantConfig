@@ -1,0 +1,18 @@
+### option to turn on basement light from actionable notification ###
+
+  alias: "Option to turn on basement light, via html5 notifier"
+  hide_entity: True
+  trigger:
+    platform: event
+    event_type: html5_notification.clicked
+    event_data:
+      action: turn_on_basement_light
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.basement_middle_light_switch
+#    - service: notify.push
+#      data:
+#        message: "Turned on light. Maybe, Idk. Check to make sure this works."
+#        title: "Test tickle"
+#        target: "Mark's Pixel 2"
+## I'm getting tired of this notification. I may re-enable it in the future. Or I may not. Don't tell me how to live my life.

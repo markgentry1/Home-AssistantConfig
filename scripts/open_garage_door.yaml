@@ -1,0 +1,10 @@
+### Script to open garage door conditionally ###
+
+open_garage_door:
+  alias: "Open Garage Door"
+  sequence:
+    - condition: state
+      entity_id: cover.garage_door_control
+      state: 'closed'
+    - service: cover.open_cover
+      entity_id: cover.garage_door_control

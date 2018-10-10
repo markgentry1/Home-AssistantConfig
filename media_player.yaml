@@ -1,0 +1,15 @@
+### Media players ###
+
+   - platform: onkyo
+     host: 192.168.1.57
+     name: receiver
+     
+   - platform: vizio
+     host: 192.168.1.54
+     access_token: Zl0p65t1n9
+     name: Bedroom TV
+     
+   - platform: vizio
+     host: 192.168.1.53
+     access_token: Zpcv4it79n
+     name: Living Room TV

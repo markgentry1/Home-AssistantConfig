@@ -1,0 +1,9 @@
+### Toggle bedroom TV's Power ###
+
+br_tv_power:
+  alias: "Bedroom TV Power"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_77
+      data:
+        packet:
+          - "JgDSAJaTFDYTNxM3ExEUERMSExITEhM3EzcTNhMSExITEhMSExITEhU0FBETEhMSExIVEBMSEzcTEhM2EzcTNxM3EzYTNxMABgaVlBM3EzYUNhMSExITEhMSExITNhQ2EzcTEhMSExITEhMSExETNxMSExITEhMSExITEhM2ExITNxM3EzYUNhM3EzcTAAYGl5ETNxM3EzcTEhMSExETEhMSEzcTNxM2FBETEhMSExITEhMSEzcTERQRExITEhMSExITNxMSEzYTNxM3EzcTNhQ2EwANBQAAAAAAAA=="

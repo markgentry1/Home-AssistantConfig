@@ -1,0 +1,7 @@
+### Cornerstone zone ###
+
+name: Cornerstone
+latitude: !secret cornerstone_lat
+longitude: !secret cornerstone_long
+radius: 100
+icon: mdi:church

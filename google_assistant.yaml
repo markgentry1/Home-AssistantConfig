@@ -1,0 +1,13 @@
+### Google Assistant stuff ###
+
+  project_id: hassgass-191016
+  client_id: !secret gass_client_id
+  access_token: !secret gass_access_token
+#  agent_user_id:
+#  api_key: 
+  exposed_domains:
+    - switch
+    - light
+    - cover
+#    - scene
+#    - script

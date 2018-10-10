@@ -1,0 +1,9 @@
+### Shut down the media server remotely ###
+
+shutdown_mediaserver:
+  alias: Shutdown Media Server
+  sequence:
+    - service: hassio.addon_stdin
+      data:
+        addon: core_rpc_shutdown
+        input: MediaServer

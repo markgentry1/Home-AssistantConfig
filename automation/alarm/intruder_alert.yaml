@@ -1,0 +1,33 @@
+### Send notifications out and announce on GHomes if motion is detected while no one is home (system unarmed in the future) ###
+
+  alias: Intruder alert
+  trigger:
+#    - platform: state
+#      entity_id: binary_sensor.ecolink_motion_sensor_sensor
+#      to: 'on'
+#    - platform: state
+#      entity_id: binary_sensor.guest_bathroom_motion_sensor_sensor
+#      to: 'on'
+    platform: state
+    entity_id: binary_sensor.motion
+    to: 'on'
+    for:
+      minutes: 2
+      # I've added this delay in hopes that we won't get notified when we get home and it takes too long for hass to realize that we're home #
+  condition:
+    condition: state
+    entity_id: binary_sensor.people_home
+    state: 'off'
+  action:
+    - service: notify.push
+      data:
+        message: "ALERT! Motion has been detected at home while everyone is away! Motion sensed at approximately {{ as_timestamp(now()) | timestamp_custom('%I:%M%p', true) }}."
+        title: "ALERT!"
+    - service: media_player.volume_set
+      data: 
+        entity_id: media_player.home_group
+        volume_level: 0.75
+    - service: tts.google_say
+      entity_id: media_player.home_group
+      data:
+        message: "Alert! Intruder detected! Authorities have already been alerted!"

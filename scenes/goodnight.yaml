@@ -1,0 +1,28 @@
+### Goodnight scene ###
+
+  name: Goodnight
+  entities:
+    switch.marks_bedside_lamp_switch:
+      state: off
+    light.basement_main_lights_level:
+      state: off
+    switch.basement_middle_light_switch:
+      state: off
+    cover.garage_door:
+      state: closed
+    light.guest_bathroom_light_level:
+      state: off
+    light.living_room_lights_level:
+      state: off
+    switch.garage_light_switch:
+      state: off
+    switch.krystins_bedside_lamp:
+      state: off
+    switch.living_room_lamp:
+      state: off
+    switch.bedroom_floor_fan:
+      state: on
+    light.kitchen_main_lights_level:
+      state: off
+    script.lr_receiver_off:
+      state: on

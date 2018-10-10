@@ -1,0 +1,21 @@
+### Notify Mark and Krystin when the basement light has been on for 30 minutes. Also give actions on the notification ###
+
+  alias: Notify everyone when basement light is on
+  trigger:
+    platform: state
+    entity_id: switch.basement_middle_light_switch
+    to: 'on'
+    for:
+      minutes: 30
+  action: 
+    service: notify.push
+    data:
+      message: "The basement light has been on for 30 minutes as of {{ as_timestamp(now()) | timestamp_custom('%I:%M%p', true) }}. Would you like to turn it off?"
+      title: "Update"
+      target: ["Mark's Pixel 2", "Krystin's Pixel 2"]
+      data:
+        actions:
+          - action: "turn_off_basement_light"
+            title: "Yes"
+          - action: "do_nothing"
+            title: "No"

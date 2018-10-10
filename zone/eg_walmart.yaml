@@ -1,0 +1,7 @@
+### EG Walmart Zone ###
+
+name: East Gadsden Walmart
+latitude: !secret eg_walmart_lat
+longitude: !secret eg_walmart_long
+radius: 400
+icon: mdi:cart

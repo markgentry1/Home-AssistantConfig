@@ -1,0 +1,17 @@
+### Return from any of the basement modes to normal with lights still on ###
+
+basement_mode_normal_on:
+  alias: "Normal mode, lights still on"
+  sequence:
+    - service: light.turn_on
+      data:
+        entity_id: light.basement_main_lights_level
+        brightness: 255
+    - service: switch.turn_on
+      data:
+        entity_id: switch.basement_middle_light_switch
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.basement_projector_off
+          - script.basement_audio_receiver_on_off

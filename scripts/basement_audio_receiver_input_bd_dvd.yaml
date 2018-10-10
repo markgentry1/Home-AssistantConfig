@@ -1,0 +1,9 @@
+### Sets the basement audio receiver's input to BD/DVD ###
+
+basement_audio_receiver_input_bd_dvd:
+  alias: "Input - BD/DVD (PS3)"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_76
+      data:
+        packet:
+          - "JgBQAAABJZURExE5ERQRFBA5ERQROBE5ERQRFBA5ETkRExE5ETkRExEUERQRORA5ERQRFBETETkRORA5ERQRFBE4ETkROBEUEQAFGwABJUwRAA0FAAAAAAAAAAA="

@@ -1,0 +1,480 @@
+######################
+### Binary Sensors ###
+######################
+
+binary_sensor.ecolink_motion_sensor_sensor:
+  friendly_name: Stairs Motion Sensor
+  entity_picture: /local/icons/EcoLink-PIRZWAVE2-ECO_2.jpg  
+binary_sensor.guest_bathroom_motion_sensor_sensor:
+  friendly_name: Guest Bathroom Motion Sensor
+  entity_picture: /local/icons/guest_bathroom_motion_sensor.jpg
+###########
+# Climate #
+###########
+
+climate.nest:
+  #entity_picture: /local/icons/nest_cool.jpg
+  icon: mdi:nest-thermostat
+
+#######################
+### Device Trackers ###
+#######################
+
+device_tracker.001bed882240:
+  friendly_name: Brocade Switch
+  icon: mdi:switch
+device_tracker.0403d6745555:
+  friendly_name: Nintendo Switch
+  icon: mdi:nintendo-switch
+device_tracker.1868cb058418:
+  friendly_name: Back Porch Camera
+  icon: mdi:cctv
+device_tracker.244b03bdc3cc:
+  friendly_name: Living Room TV
+  icon: mdi:television
+device_tracker.4480eb238071:
+  friendly_name: Krystins Phone
+  icon: mdi:cellphone-android
+device_tracker.4c0bbebf9675:
+  friendly_name: Xbox One
+  icon: mdi:xbox
+device_tracker.54c41527f605:
+  friendly_name: Driveway Camera
+  icon: mdi:cctv
+device_tracker.54c41527f621:
+  friendly_name: Back Yard Camera
+  icon: mdi:cctv
+device_tracker.54c41527f66c:
+  friendly_name: Front Porch Camera
+  icon: mdi:cctv
+device_tracker.6837e90c618d:
+  friendly_name: Living Room Firestick
+  icon: mdi:kodi
+device_tracker.6c626dc1dcb9:
+  friendly_name: Media PC
+  icon: mdi:theater
+device_tracker.6cadf87bf72e:
+  friendly_name: Chromecast
+  icon: mdi:cast
+device_tracker.802aa856f32c:
+  friendly_name: Ubiquiti AP
+  icon: mdi:wifi
+device_tracker.902b34a566a4:
+  friendly_name: Desktop PC
+  icon: mdi:desktop-classic
+device_tracker.ac3743a72840:
+  friendly_name: Marks Pixel
+  icon: mdi:cellphone-android
+device_tracker.b47c9c8ba6bd:
+  friendly_name: Bedroom Firestick
+  icon: mdi:kodi
+device_tracker.bcad289eff6e:
+  friendly_name: Hikvision NVR
+  icon: mdi:record-rec
+device_tracker.c0ffd4959ff4:
+  friendly_name: Router
+  icon: mdi:router-wireless
+device_tracker.dca971e71ce2:
+  friendly_name: Chromebook
+  icon: mdi:laptop-chromebook
+device_tracker.e8abfa06df7f:
+  friendly_name: Wifi Camera
+  icon: mdi:camera
+device_tracker.f0272d565ce1:
+  friendly_name: Amazon Echo
+  icon: mdi:amazon
+device_tracker.f0d5bf703da2:
+  friendly_name: Marks Work Laptop
+  icon: mdi:laptop
+device_tracker.gentry_krystin:
+  friendly_name: Krystin's phone
+  entity_picture: /local/icons/nexus6.png
+device_tracker.gentry_p2:
+  friendly_name: Mark's phone
+  entity_picture: /local/icons/pixel.png
+
+##############
+### Groups ###
+##############
+
+group.all_automations:
+  hidden: false
+  control: hidden
+  friendly_name: Automation Override
+group.basement_media:
+  control: hidden
+group.master_bedroom_media:
+  control: hidden
+group.living_room_tv_group:
+  control: hidden
+group.radio:
+  control: hidden
+
+# Group orders #
+group.nest_group:
+  order: 1
+group.presence:
+  order: 2
+group.main_lights:
+  order: 3
+group.kitchen:
+  order: 4
+group.lamps:
+  order: 5
+group.living_room:
+  control: hidden
+  order: 6
+group.fans:
+  control: hidden
+  order: 7
+group.master_bedroom:
+  control: hidden
+  order: 8
+group.garage:
+  order: 9
+group.guest_bathroom: 
+  order: 10
+group.office:
+  control: hidden
+  order: 11
+group.sensors: 
+  order: 12
+group.basement:
+  order: 13
+group.back_porch:
+  order: 14
+group.misc:
+  order: 15
+group.scripts_for_group_views:
+  control: hidden
+  order: 16
+  
+##################
+# Input Booleans #
+##################
+input_boolean.weather:
+  config:
+    weather: weather.yweather
+    sun: sun.sun    
+
+##########
+# Lights #
+##########
+light.guest_bathroom_light_level:
+  friendly_name: Guest Bathroom Light
+light.basement_main_lights_level:
+  friendly_name: Basement Main Lights
+light.living_room_lights_level:
+  friendly_name: Living Room Lights
+light.kitchen_main_lights_level:
+  friendly_name: Kitchen Main Lights
+
+#################
+# Media Players #
+#################
+
+media_player.vizio_smartcast:
+  friendly_name: Bedroom TV
+media_player.receiver:
+  friendly_name: Living Room Receiver
+
+##########
+# Scenes #
+##########
+scene.turn_everything_off:
+  icon: mdi:power
+scene.goodnight:
+  icon: mdi:sleep
+scene.good_morning:
+  icon: mdi:weather-sunny
+
+###########
+# Scripts #
+###########
+script.basement_audio_receiver_on_off:
+  icon: mdi:power
+script.basement_audio_receiver_vol_up:
+  icon: mdi:volume-plus
+script.basement_audio_receiver_vol_down:
+  icon: mdi:volume-minus
+script.basement_audio_receiver_input_bd_dvd:
+  icon: mdi:playstation
+script.basement_audio_receiver_input_bluetooth:
+  icon: mdi:bluetooth
+script.basement_audio_receiver_input_game:
+  icon: mdi:xbox
+script.basement_audio_receiver_input_strm_box:
+  icon: mdi:amazon
+script.basement_movie_mode:
+  icon: mdi:theater
+script.basement_projector_off:
+  icon: mdi:power
+script.basement_projector_on:
+  icon: mdi:power
+script.br_tv_power:
+  icon: mdi:power
+script.br_tv_vol_up:
+  icon: mdi:volume-plus
+script.br_tv_vol_down:
+  icon: mdi:volume-minus
+script.br_tv_source_button:
+  icon: mdi:sitemap
+script.frontend_light_view:
+  friendly_name: Organize by light type
+  icon: mdi:lightbulb-outline
+script.frontend_room_view:
+  friendly_name: Organize by room
+  icon: mdi:home-assistant
+script.lr_tv_vol_up:
+  friendly_name: Living Room Volume Up
+  icon: mdi:volume-plus
+script.lr_tv_vol_down:
+  friendly_name: Living Room Volume Down
+  icon: mdi:volume-minus
+script.lr_receiver_on:
+  friendly_name: Living Room Receiver On
+  icon: mdi:power
+script.lr_receiver_off:
+  friendly_name: Living Room Receiver Off
+  icon: mdi:power
+script.radio_play:
+  icon: mdi:play-circle
+script.radio_stop:
+  icon: mdi:stop-circle
+script.shutdown_mediaserver:
+  icon: mdi:power
+script.shutdown_office_desktop:
+  icon: mdi:power
+
+###############
+### Sensors ###
+###############
+
+sensor.amazon_echo:
+  entity_picture: /local/icons/echo.png
+sensor.ap:
+  entity_picture: /local/icons/ap.png
+sensor.battery_level_motion_sensor_guest_bathroom:
+  friendly_name: Guest Bathroom Motion Sensor Battery
+  icon: mdi:battery
+sensor.battery_level_motion_sensor_stairs:
+  friendly_name: Stairs Motion Sensor Battery
+  icon: mdi:battery
+sensor.battery_level_smoke_co_alarm:
+  icon: mdi:battery
+sensor.battery_phone_krystin:
+  friendly_name: Krystin's phone battery
+  icon: mdi:battery
+sensor.battery_phone_mark:
+  friendly_name: Mark's phone battery
+  icon: mdi:battery
+sensor.br_tv:
+  icon: mdi:television
+sensor.broadlink_rmpro:
+  friendly_name: Broadlink RM Pro
+  entity_picture: /local/icons/broadlink_rmpro.jpg
+sensor.camera_back_porch:
+  entity_picture: /local/icons/ip_camera.jpg
+sensor.camera_back_yard:
+  entity_picture: /local/icons/ip_camera.jpg
+sensor.camera_driveway:
+  entity_picture: /local/icons/ip_camera.jpg
+sensor.camera_front_porch:
+  entity_picture: /local/icons/ip_camera.jpg
+sensor.camera_inside_wifi:
+  entity_picture: /local/icons/foscam.jpg
+sensor.chromebook:
+  icon: mdi:laptop-chromebook
+sensor.chromecast:
+  entity_picture: /local/icons/chromecast.png
+sensor.crime_reports:
+  icon: mdi:pistol
+sensor.current_weather_condition:
+  friendly_name: Condition
+sensor.current_weather_current:
+  friendly_name: Currently
+sensor.current_weather_humidity:
+  friendly_name: Humidity
+  icon: mdi:water-percent
+sensor.current_weather_temperature:
+  friendly_name: Temperature
+sensor.current_weather_temperature_max:
+  friendly_name: High
+sensor.current_weather_temperature_min:
+  friendly_name: Low
+sensor.current_weather_visibility:
+  friendly_name: Visibility
+sensor.current_weather_wind_speed:
+  friendly_name: Wind speed
+  icon: mdi:weather-windy
+sensor.dark_sky_apparent_temperature:
+  friendly_name: "Feels Like"
+sensor.dark_sky_cloud_coverage:
+  friendly_name: "Cloud Coverage"
+sensor.dark_sky_daily_high_apparent_temperature:
+  friendly_name: "Feels Like High"
+sensor.dark_sky_daily_high_temperature:
+  friendly_name: "Today's High"
+sensor.dark_sky_daily_low_apparent_temperature:
+  friendly_name: "Feels Like Low"
+sensor.dark_sky_daily_low_temperature:
+  friendly_name: "Today's Low"
+sensor.dark_sky_daily_max_precip_intensity:
+  friendly_name: "Daily Max Precip Intensity"
+sensor.dark_sky_daily_summary:
+  friendly_name: "Daily"
+sensor.dark_sky_dew_point:
+  friendly_name: "Dew Point"
+sensor.dark_sky_hourly_summary:
+  friendly_name: "Hourly"
+sensor.dark_sky_humidity:
+  friendly_name: "Humidity"
+sensor.dark_sky_icon:
+  friendly_name: "Icon"
+sensor.dark_sky_minutely_summary:
+  friendly_name: "Minutely"
+sensor.dark_sky_nearest_storm_distance:
+  friendly_name: "Nearest Storm"
+sensor.dark_sky_ozone:
+  friendly_name: "Ozone"
+sensor.dark_sky_precip:
+  friendly_name: "Precipitation"
+sensor.dark_sky_precip_probability:
+  friendly_name: "Precipitation Chance"
+sensor.dark_sky_pressure:
+  friendly_name: "Pressure"
+sensor.dark_sky_summary:
+  friendly_name: "Currently"
+sensor.dark_sky_temperature:
+  friendly_name: "Temperature"
+sensor.dark_sky_uv_index:
+  friendly_name: "UV Index"
+sensor.dark_sky_visibility:
+  friendly_name: "Visibility"
+sensor.dark_sky_wind_bearing:
+  friendly_name: "Wind Direction"
+sensor.dark_sky_wind_speed:
+  friendly_name: "Wind Speed"
+sensor.desktop_pc:
+  icon: mdi:desktop-classic
+sensor.epson_printer:
+  icon: mdi:printer
+sensor.firestick_bed_room:
+  entity_picture: /local/icons/firestick.jpg
+sensor.firestick_living_room:
+  entity_picture: /local/icons/firestick.jpg
+sensor.forecast_1_condition:
+  friendly_name: Tomorrow
+sensor.forecast_1_temperature_max:
+  friendly_name: Tomorrow's high
+sensor.forecast_1_temperature_min:
+  friendly_name: Tomorrow's low
+sensor.forecast_2_condition:
+  friendly_name: Day after tomorrow
+sensor.forecast_2_temperature_max:
+  friendly_name: Day after tomorrow's high
+sensor.forecast_2_temperature_min:
+  friendly_name: Day after tomorrow's low
+sensor.garage_door_internet_gateway:
+  icon: mdi:garage
+sensor.ghomemini_downstairs:
+  friendly_name: Google Home Mini Downstairs
+  entity_picture: /local/icons/ghomemini.jpg
+sensor.ghomemini_upstairs:
+  friendly_name: Google Home Mini Upstairs
+  entity_picture: /local/icons/ghomemini.jpg
+sensor.hikvision_nvr:
+  entity_picture: /local/icons/nvr.jpg
+sensor.krystin_phone:
+  icon: mdi:cellphone-android
+sensor.lr_tv:
+  icon: mdi:television
+sensor.mark_charging:
+  friendly_name: Phone power status
+sensor.mark_drive_time_destination:
+  icon: mdi:car
+sensor.mark_drive_time_destination_2:
+  icon: mdi:car
+sensor.mark_phone:
+  icon: mdi:cellphone-android
+sensor.mark_t560:
+  icon: mdi:laptop-windows
+sensor.media_pc:
+  icon: mdi:theater
+sensor.nest:
+  entity_picture: /local/icons/nest_cool.jpg
+sensor.nest_thermostat_target:
+  icon: mdi:bullseye
+sensor.ps3_living_room:
+  icon: mdi:playstation
+sensor.router:
+  icon: mdi:router-wireless
+sensor.smoke_alarm:
+  entity_picture: /local/icons/smoke_alarm.jpg
+sensor.speedtest_download:
+  icon: mdi:cloud-download
+sensor.speedtest_upload:
+  icon: mdi:cloud-upload
+sensor.speedtest_ping:
+  icon: mdi:camera-timer
+sensor.switch:
+  entity_picture: /local/icons/switch.jpg
+sensor.time_to_home_for_mark:
+  icon: mdi:car
+sensor.time_to_work_for_mark:
+  icon: mdi:car
+sensor.time_for_mark_to_krystin:
+  icon: mdi:car
+sensor.time_to_home_for_krystin:
+  icon: mdi:car
+sensor.time_to_work_for_krystin:
+  icon: mdi:car
+sensor.treadmill:
+  icon: mdi:run
+sensor.ups:
+  entity_picture: /local/icons/ups.png
+sensor.xbox_one_downstairs:
+  entity_picture: /local/icons/xbox_one.png
+sensor.xbox_one_livingroom:
+  entity_picture: /local/icons/xbox_one.png
+sensor.nintendo_switch:
+  icon: mdi:nintendo-switch
+
+### Switches ###
+
+switch.air_purifier:
+  friendly_name: Air Purifier
+  icon: mdi:fan
+switch.back_porch_light_switch:
+  friendly_name: Back Porch Light
+  icon: mdi:lightbulb
+switch.basement_middle_light_switch:
+  friendly_name: Basement Middle Light
+  icon: mdi:lightbulb
+switch.bedroom_floor_fan:
+  icon: mdi:fan
+switch.garage_light_switch:
+  icon: mdi:lightbulb
+  friendly_name: Garage Light
+switch.ge_unknown_type5052_id3031_switch:
+  friendly_name: Lamp
+  new_entity_id: switch.lamp
+switch.kitchen_main_lights_switch:
+  friendly_name: Main Kitchen Lights
+  icon: mdi:lightbulb
+switch.krystins_lamp:
+  assumed_state: false
+  icon: mdi:lamp
+switch.marks_bedside_lamp_switch:
+  friendly_name: Mark's Bedside Lamp
+  icon: mdi:lamp
+switch.living_room_lamp:
+  assumed_state: false
+  icon: mdi:lamp
+switch.living_room_tv:
+  #assumed_state: false   # commented this out to leave the power on/off icons in the frontend
+  icon: mdi:power
+switch.wake_on_lan:
+  icon: mdi:power
+switch.wake_on_lan_2:
+  icon: mdi:power

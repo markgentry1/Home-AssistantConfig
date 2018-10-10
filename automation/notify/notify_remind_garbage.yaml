@@ -1,0 +1,15 @@
+### Send Push notification to all devices on Sunday at 5pm to remind to get the trash can to the road ###
+
+  alias: "Notify - Remind about trash"
+  trigger:
+    platform: time
+    at: '17:00:00'
+  condition:
+    condition: time
+    weekday:
+      - sun
+  action:
+    service: notify.push
+    data:
+      message: "Make sure the trash can has been taken to the road for pickup! Tomorrow is trash day."
+      title: "Reminder"

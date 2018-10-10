@@ -1,0 +1,10 @@
+### Script to close garage door conditionally ###
+
+close_garage_door:
+  alias: "Close Garage Door"
+  sequence:
+    - condition: state
+      entity_id: cover.garage_door_control
+      state: 'open'
+    - service: cover.close_cover
+      entity_id: cover.garage_door_control

@@ -1,0 +1,9 @@
+### Turns the volume down in the basement ###
+
+basement_audio_receiver_vol_down:
+  alias: "Turn volume down"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_76
+      data:
+        packet:
+          - "JgCQAAABJZUQFBE5ERQRExE5ERQROBE5ETkQFRA5ETkQFBE5ETgRFBE5ETgRFBEUERQRExEUERQRFBEUEDkRORE4ETkRORA5EQAE9wABJZUQFBE5ERQRExE5ERQROBE5ETgRFBE5ETgRFBE5ETgRFBE5ETgRFBEUERQQFBEUERQRFBETETkRORA5ETkROBE5EQANBQAAAAAAAAAA"

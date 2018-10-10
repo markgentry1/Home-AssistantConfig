@@ -1,0 +1,8 @@
+### Turn off the audio receiver in the living room ###
+
+lr_receiver_off:
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_70
+      data:
+        packet:
+          - "JgBYAAABJZISExE5EBQQFBA5ERQQORA5ERMRExE5EDkRExE4EjcRFBE4ETkQOBEUERMRFBA5EBQRExEUERMQORE4ETgRFBA5EQAFHAABJEsRAAw9AAElSREADQU="
